@@ -1,0 +1,51 @@
+body{
+    font-family: sans-serif;
+}
+
+.carouselimage{
+    height: 85vh;
+}
+
+.darkblue{
+    color: darkblue;
+}
+
+.section{
+    min-height: 99vh;
+}
+
+#events{
+
+}
+
+.row{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.card{
+    max-width: 280px;
+    max-height: 415px;
+    min-width: 280px;
+    min-height: 415px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+#interprets{
+
+}
+
+#are_u_organizer{
+    min-height: 50vh;
+}
+
+#partners{
+    min-height: 50vh;
+}
+
+footer{
+    min-height: 20vh;
+}
