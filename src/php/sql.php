@@ -3,8 +3,8 @@
 
 //toto by malo byt pripojenie na server eva - treba tam udaje z Wis - Hesla - ucet databaze sql
 $db = mysqli_init();
-$conn = mysqli_real_connect($db, 'localhost', 'xcimme00', '3omgever', 'xcimme00', 0, '/var/run/mysql/mysql.sock')
-if (!$conn) 
+//$conn = mysqli_real_connect($db, 'localhost', 'xcimme00', '3omgever', 'xcimme00', 0, '/var/run/mysql/mysql.sock');
+if(!$conn)
 {
     die('cannot connect '.mysqli_connect_error());
 }
@@ -12,7 +12,7 @@ echo "Connected successfully";
 
 
 //query vykona akciu nad specifikovanou databazou
-mysqli_query(INSERT INTO OSOBA VALUES (1, 'Jan', 'Novak', 'jno@gmail.com', '0908568985', 'Nové Zámky'););
+//mysqli_query(INSERT INTO OSOBA VALUES (1, 'Jan', 'Novak', 'jno@gmail.com', '0908568985', 'Nové Zámky'););
 //$sql je konkretna poziadavka (prikazy) ulozena do premennej
 $sql = "SELECT * FROM OSOBA;";
 
