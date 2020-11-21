@@ -9,13 +9,11 @@
 
 #zakladna tabulka pre registrovane osoby
 CREATE TABLE OSOBA (
-    OsobaID int,
-    Meno varchar(255),
-    Priezvisko varchar(255),
-    Email varchar(255),
-    Telefon varchar(255),
-    Mesto varchar(255),
-    CONSTRAINT Osoba_PK PRIMARY KEY (OsobaID, Meno, Priezvisko)
+    OsobaID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Meno varchar(128) NOT NULL,
+    Username varchar(128) NOT NULL,
+    Email varchar(128) NOT NULL,
+    Password varchar(128) NOT NULL
 );
 
 #o neregistrovanej osobe nevieme nic, mozeme ju identifikovat len ako nejake cislo

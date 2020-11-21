@@ -1,51 +1,55 @@
 body{
     font-family: sans-serif;
+    min-height: 100%;
 }
 
-.carouselimage{
-    height: 85vh;
-}
+/* INDEX FILE */
+    .carouselimage{
+        height: 85vh;
+    }
 
-.darkblue{
-    color: darkblue;
-}
+    .section{
+        min-height: 99vh;
+    }
 
-.section{
-    min-height: 99vh;
-}
+    #events{
 
-#events{
+    }
 
-}
+    .row{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
-.row{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+    .card{
+        max-width: 280px;
+        max-height: 415px;
+        min-width: 280px;
+        min-height: 415px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+    }
 
-.card{
-    max-width: 280px;
-    max-height: 415px;
-    min-width: 280px;
-    min-height: 415px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: white;
-}
+    #interprets{
 
-#interprets{
+    }
 
-}
+    #are_u_organizer{
+        min-height: 50vh;
+    }
 
-#are_u_organizer{
-    min-height: 50vh;
-}
+    #partners{
+        min-height: 50vh;
+    }
 
-#partners{
-    min-height: 50vh;
-}
+    footer{
+        min-height: 20vh;
+    }
 
-footer{
-    min-height: 20vh;
-}
+
+/* REGISTER FILE */
+    .register-container{
+        min-height: 80vh;
+    }
