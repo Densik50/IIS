@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,15 +42,34 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn my-2 my-sm-0" type="submit">Se</button>
                 </form>
+                
+                <?php
+                    if(isset($_SESSION["OsobaID"]))
+                    {
+                        $userid = $_SESSION["userid"];
+                        echo    "<ul class=\"navbar-nav\">
+                                    <li class=\"nav-item active\">
+                                        <a class=\"nav-link\" href=\"profile.php\">$userid<span class=\"sr-only\">(current)</span></a>
+                                    </li>
+                                    <li class=\"nav-item active\">
+                                        <a class=\"nav-link\" href=\"php/includes/logout.include.php\">Log out<span class=\"sr-only\">(current)</span></a>
+                                    </li>
+                                </ul>";
+                    }
+                    else
+                    {
+                        echo    "<ul class=\"navbar-nav\">
+                                    <li class=\"nav-item active\">
+                                        <a class=\"nav-link\" href=\"login.php\">Log In <span class=\"sr-only\">(current)</span></a>
+                                    </li>
+                                    <li class=\"nav-item active\">
+                                        <a class=\"nav-link\" href=\"register.php\">Register <span class=\"sr-only\">(current)</span></a>
+                                    </li>
+                                </ul>";
+                    }
+                ?>
 
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="login.php">Log In <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="register.php">Register <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
+                
             </div>
         </nav>
         <!-- NAVBAR END -->

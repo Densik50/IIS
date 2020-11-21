@@ -14,6 +14,20 @@ function is_empty_registerform($name, $username, $email, $password, $password_re
     return $result;
 }
 
+function is_empty_loginform($username, $password)
+{
+    $result;
+    if(empty($username) || empty($password))
+    {
+        $result = true;
+    }
+    else
+    {
+        $result = false;
+    }
+    return $result;
+}
+
 function is_valid_username($username) 
 {
     $result;
@@ -105,4 +119,32 @@ function create_user($conn, $name, $username, $email, $password)
     mysqli_stmt_close($stmt);
     header("location: ../../register.php?error=none");
     exit();
+}
+
+function login_user($conn, $username, $password)
+{
+    $userid_exists = user_exists($conn, $username, $username);
+
+    if($userid_exists === false)
+    {
+        header("location: ../../login.php?error=wrong_login");
+        exit();
+    }
+
+    $password_hashed = $userid_exists["Password"];
+    $check_password = password_verify($password, $password_hashed);
+
+    if($check_password === false)
+    {
+        header("location: ../../login.php?error=wrong_login");
+        exit();
+    }
+    else if($check_password === true)
+    {
+        session_start();
+        $_SESSION["userid"] = $userid_exists["Username"];
+        $_SESSION["OsobaID"] = $userid_exists["OsobaID"];
+        header("location: ../../index.php");
+        exit();
+    }
 }

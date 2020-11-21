@@ -26,10 +26,22 @@
             <!-- PASSWORD END -->
 
             <!-- SUBMIT BUTTON -->
-            <button type="submit" class="btn btn-primary">Log In</button>
+            <button type="submit" name="submit" class="btn btn-primary">Log In</button>
             <!-- SUBMIT BUTTON END -->
         </form>
 
+        <?php
+            if(isset($_GET["error"])) {
+                if($_GET["error"] == "empty_input")
+                {
+                    echo "<p> Example error 1.<\p>";
+                }
+                else if($_GET["error"] == "wrong_login")
+                {
+                    echo "<p> Example error 2.<\p>";
+                }
+            }
+        ?>
 
     </div>
     <!-- SITE END -->

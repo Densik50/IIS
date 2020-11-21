@@ -59,6 +59,14 @@
             <!-- SUBMIT BUTTON END -->
         </form>
 
+        <?php
+            if(isset($_GET["error"])) {
+                if($_GET["error"] == "empty_input")
+                {
+                    echo "<p> Example error 1.<\p>";
+                }
+            }
+        ?>
 
     </div>
     <!-- SITE END -->
