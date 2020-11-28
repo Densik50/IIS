@@ -1,0 +1,47 @@
+databazu
+    pri vytvoreni eventu bude moznost nahrat obrazok pre event a vytvori sa zlozka s id eventom
+    table pre events
+        int id eventu auto increment
+        varchar nazov eventu
+        int fk osoba id ako zakladatel eventu
+        toto si niesom isty ako ale chcel by to premennu typu kde mozme zadat viac hodnot teda nieco ako pole ale v podstate novu tabulku ja nvm, kde sa budu pridavat pokladnici
+        date ? alebo varchar nvm, datum eventu
+        nvm aky typ, nejaky casovy rozpis eventu
+        dalsi multizaznam, kde bude zoznam interpretov
+        varchar multizaznam zanre
+
+    table pre interpreta
+        varchar nazov
+        varchar ktohozalozil
+        multizaznam usery ktory su pridany ako sucast interpreta
+
+    upravit table default usera, pridat
+        varchar telefonne cislo
+        varchar popis ak si chce dat nejaky ten user
+        toto neviem ci je dobry napad lebo budeme mat data o tom aj tu aj v eventu a interprete, ale mozno nejaky multizaznam toho ze ake eventu vytvoril
+            ake eventy spravuje ako pokladnik, na ake eventy si kupil listok, aby sme nemuseli prechadzat vsetky tabulky eventov a hladat tie veci tam? not sure tho ci to nie je chybna databaza stym
+            ze budu tieto data aj tam aj tu
+
+front end
+    index.php
+        interpretov dokoncit pridat karticky
+
+    footer.php
+        pridat nejake linky na kontakt atd atd nvm co presne tu chceme
+
+    events.php
+        nejake nastavenia na lavo, navbar, kde sa budu dat vybrat medzi moznostami upcomming events, a history events a mozno podla zanrov este? a nasledne sa
+        vypisu eventy pod seba nvm asi 10 az 20 nvm ako to vide pod seba take riadky s obrazkom a popisom az dosiahne to cistlo 10 tak sa objavi pager dole
+    
+    interprets.php
+        podobne ako events ale toto nie je hlavnou sucastou zadania
+
+    profile.php
+        vypis informacii o uzivatelovi, tato stranka by mala sluzit na vypis informacii o nas, a profile.php?user=XXXXXXXXX bude sluzit
+        na pozeranie profilov inych userov
+
+    search.php
+        po kliknuti na lupu(currently Se) na index.php nas presmeruje na tuto stranku kde sa zobrazia eventy/interpreti s danym nazvom
+
+spravit funkcnost na eve...
+    
