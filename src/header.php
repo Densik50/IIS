@@ -22,7 +22,7 @@
     <body class="bg-light">
 
         <!-- NAVBAR -->
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark"> 
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mynavbar"> 
             <a class="navbar-brand" href="index.php#">SITE_NAME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,29 +30,42 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="index.php#events">Events <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="index.php#interprets">Interprets <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
-                <form class="form-inline my-2 my-lg-0 mr-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn my-2 my-sm-0" type="submit">Se</button>
-                </form>
+                <ul class="navbar-nav mr-auto">
+                    <form class="form-inline my-2 my-lg-0">
+                        <li class="nav-item">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn my-2 my-sm-0 nav-link" type="submit">Search</button>
+                        </li>
+                    </form>
+                </ul>
                 
                 <?php
                     if(isset($_SESSION["OsobaID"]))
                     {
-                        $userid = $_SESSION["userid"];
-                        echo    "<ul class=\"navbar-nav\">
-                                    <li class=\"nav-item active\">
-                                        <a class=\"nav-link\" href=\"profile.php\">$userid<span class=\"sr-only\">(current)</span></a>
-                                    </li>
-                                    <li class=\"nav-item active\">
-                                        <a class=\"nav-link\" href=\"php/includes/logout.include.php\">Log out<span class=\"sr-only\">(current)</span></a>
+                        echo   "<ul class=\"navbar-nav\">
+                                    <li class=\"nav-item dropdown bg-dark\">
+                                        <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">" . $_SESSION["userid"] . "</a>
+                                        <div class=\"dropdown-menu bg-dark\">
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php?user=" . $_SESSION["userid"] . "\">My profile</a>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"myevents.php\">My events</a>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"myinterprets.php\">My interprets</a>
+                                            <div class=\"dropdown-divider\"></div>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php\">Edit profile</a>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"create_event.php\">Create event</a>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"add_interpret.php\">Add interpret</a>
+                                            <div class=\"dropdown-divider\"></div>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"php/includes/logout.include.php\">Log out</a>
+                                        </div>
                                     </li>
                                 </ul>";
                     }

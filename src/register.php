@@ -3,7 +3,7 @@
 ?>
 
     <!-- SITE START -->
-    <div class="container register-container">
+    <div class="container fullscreen-container">
         <h2>Register</h2>
         <form class="register-form" action="php/includes/register.include.php" method="post">
             <!-- FULL NAME -->

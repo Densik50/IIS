@@ -3,7 +3,7 @@
 ?>
 
     <!-- SITE START -->
-    <div class="container register-container">
+    <div class="container fullscreen-container">
         <h2>Log In</h2>
         <form class="login-form" action="php/includes/login.include.php" method="post">
 
