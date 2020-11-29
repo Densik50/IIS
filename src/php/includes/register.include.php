@@ -9,6 +9,25 @@ if(isset($_POST["submit"]))
     $password = $_POST["pwd"];
     $password_repeat = $_POST["pwdrepeat"];
 
+    if(isset($_POST["mobile"]))
+    {
+        $phone = $_POST["mobile"];
+    }
+    else
+    {
+        $phone = "";
+    }
+    
+    if(isset($_POST["address"]))
+    {
+        $address = $_POST["address"];;
+    }
+    else
+    {
+        $address = "";
+    }
+   
+
     require_once('database_handler.include.php');
     require_once('general_functions.include.php');
 
@@ -42,8 +61,7 @@ if(isset($_POST["submit"]))
         header("location: ../../register.php?error=user_already_exists");
         exit();
     }
-
-    create_user($conn, $name, $username, $email, $password);
+    create_user($conn, $name, $username, $email, $password, $phone, $address);
 }
 else
 {

@@ -6,16 +6,8 @@
     <!-- SITE START -->
     <div class="container fullscreen-container">
     <?php
-            if(isset($_SESSION["userid"]))
+            if(isset($_SESSION["UserID"]))
             {
-                $user = $_SESSION["userid"];
-
-                require_once 'php/includes/database_handler.include.php';
-                require_once 'php/includes/general_functions.include.php';
-                
-                $userid_exists = get_info($conn, $user, $user);
-
-                //meno
                 echo 
                     "<h2>Create new event:</h2>
                     <form class=\"register-form\" action=\"php/includes/create_event.include.php\" method=\"post\">
@@ -29,6 +21,15 @@
                         </div>
                         <!-- NAME END -->  
 
+                        <!-- DESCRIBTION -->
+                        <div class=\"form-group row\">
+                            <label for=\"describtion\" class=\"col-sm-2 col-form-label\">Describtion: </label>
+                            <div class=\"col-sm-10\">
+                                <input type=\"text\" name=\"describtion\" class=\"form-control\" id=\"describtion\" placeholder=\"Describtion(max 255 characters)...\">
+                            </div>
+                        </div>
+                        <!-- DESCRIBTION END -->  
+
                         <!-- ADDRESS -->
                         <div class=\"form-group row\">
                             <label for=\"address\" class=\"col-sm-2 col-form-label\">Address: </label>
@@ -38,14 +39,41 @@
                         </div>
                         <!-- ADDRESS END --> 
 
-                        <!-- DATE -->
+                        <!-- START DATE -->
                         <div class=\"form-group row\">
-                            <label for=\"date\" class=\"col-sm-2 col-form-label\">Date: </label>
+                            <label for=\"startdate\" class=\"col-sm-2 col-form-label\">Start date: </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"date\" name=\"date\" id=\"date\">
+                                <input type=\"date\" name=\"startdate\" id=\"startdate\">
                             </div>
                         </div>
-                        <!-- DATE END -->
+                        <!-- START DATE END -->
+
+                        <!-- START TIME -->
+                        <div class=\"form-group row\">
+                            <label for=\"starttime\" class=\"col-sm-2 col-form-label\">Start time(12H format): </label>
+                            <div class=\"col-sm-10\">
+                                <input type=\"time\" name=\"starttime\" id=\"starttime\">
+                            </div>
+                        </div>
+                        <!-- START TIME END -->
+
+                        <!-- END DATE -->
+                        <div class=\"form-group row\">
+                            <label for=\"enddate\" class=\"col-sm-2 col-form-label\">End date: </label>
+                            <div class=\"col-sm-10\">
+                                <input type=\"date\" name=\"enddate\" id=\"enddate\">
+                            </div>
+                        </div>
+                        <!-- END DATE END -->
+
+                        <!-- END TIME -->
+                        <div class=\"form-group row\">
+                            <label for=\"endtime\" class=\"col-sm-2 col-form-label\">End time(12H format): </label>
+                            <div class=\"col-sm-10\">
+                                <input type=\"time\" name=\"endtime\" id=\"endtime\">
+                            </div>
+                        </div>
+                        <!-- END TIME END -->
 
                         <!-- POSTER -->
                         <div class=\"form-group row\">
@@ -58,39 +86,37 @@
                         <div class=\"form-group row\">
                             <div class=\"col-sm-2\">Genres(atleast 1):</div>
                             <div class=\"col-sm-10\">
-                                <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_rock\" name=\"checkbox_rock\">
-                                    <label class=\"form-check-label\" for=\"checkbox_rock\">
-                                    Rock
-                                    </label>
-                                </div>
-                                <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_rap\" name=\"checkbox_rap\">
-                                    <label class=\"form-check-label\" for=\"checkbox_rap\">
-                                    Rap
-                                    </label>
-                                </div>
-                                <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_pop\" name=\"checkbox_pop\">
-                                    <label class=\"form-check-label\" for=\"checkbox_pop\">
-                                    Pop
-                                    </label>
-                                </div>
-                                <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_metal\" name=\"checkbox_metal\">
-                                    <label class=\"form-check-label\" for=\"checkbox_metal\">
-                                    Metal
-                                    </label>
-                                </div>
-                                <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_dance\" name=\"checkbox_dance\">
-                                    <label class=\"form-check-label\" for=\"checkbox_dance\">
-                                    Dance
-                                    </label>
-                                </div>
+                            ";
+
+
+                                require_once 'php/includes/database_handler.include.php';
+                                require_once 'php/includes/general_functions.include.php';
+
+                                $data = get_genres($conn);
+
+                                foreach($data as $row):
+                                    echo "
+                                        <div class=\"form-check\">
+                                            <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_rock\" name=\"checkbox_rock\">
+                                            <label class=\"form-check-label\" for=\"checkbox_rock\">
+                                            " . $row["GenreName"] ."
+                                            </label>
+                                        </div>
+                                    ";
+                                endforeach;
+                                echo "
                             </div>
                         </div>
                         <!-- GENRES END -->
+                        
+                        <!-- MAX CAPACITY -->
+                        <div class=\"form-group row\">
+                            <label for=\"maxcap\" class=\"col-sm-2 col-form-label\">Max. capacity: </label>
+                            <div class=\"col-sm-10\">
+                                <input type=\"text\" name=\"maxcap\" class=\"form-control\" id=\"maxcap\" placeholder=\"150\">
+                            </div>
+                        </div>
+                        <!-- MAX CAPACITY END --> 
 
                         <!-- PRICE -->
                         <div class=\"form-group row\">

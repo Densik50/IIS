@@ -1,12 +1,11 @@
-#zatial mam na servery len tuto databazu potom mozme skusat pridavat ostatne
 CREATE TABLE USERS (
     UserID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     Fullname varchar(128) NOT NULL,
     Username varchar(128) NOT NULL,
     Email varchar(128) NOT NULL,
     Password varchar(128) NOT NULL,
-    Mobile varchar(128),
-    Address varchar(128),
+    Mobile varchar(128) NOT NULL,
+    Address varchar(128) NOT NULL,
     is_admin boolean NOT NULL,
     is_banned boolean NOT NULL
 );
@@ -26,7 +25,8 @@ CREATE TABLE EVENTS (
     End_date date NOT NULL,
     End_time time NOT NULL,
     Price varchar(16) NOT NULL,
-    Kapacita int NOT NULL,
+    Capacity int NOT NULL,
+    MaxCapacity int NOT NULL,
     UserID int NOT NULL,
     FOREIGN KEY (UserID) REFERENCES USERS(UserID)
 );
@@ -47,6 +47,8 @@ CREATE TABLE EVENT_CASHIERS (
 
 CREATE TABLE INTERPRET (
     InterpretID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Owner int,
+    FOREIGN KEY (Owner) REFERENCES USERS(UserID),
     Name varchar(128)
 );
 

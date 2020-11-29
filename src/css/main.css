@@ -3,6 +3,10 @@ body{
     min-height: 100%;
 }
 
+.nick{
+    min-width: 160px;
+}
+
 /* INDEX FILE */
     .carouselimage{
         height: 85vh;
@@ -75,3 +79,4 @@ body{
             max-height: 100vh;
         }
     }
+

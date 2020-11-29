@@ -1,7 +1,13 @@
 <?php
     include_once 'header.php';
 ?>
-
+    <?php
+    if(isset($_SESSION["UserID"]))
+    {
+        header("location: php/includes/logout.include.php");
+        exit();
+    }
+    ?>
     <!-- SITE START -->
     <div class="container fullscreen-container">
         <h2>Log In</h2>

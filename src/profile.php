@@ -15,9 +15,9 @@
             }
             else   
             {
-                if(isset($_SESSION["userid"]))
+                if(isset($_SESSION["UserID"]))
                 {
-                    $user = $_SESSION["userid"];
+                    $user = $_SESSION["Username"];
 
                     require_once 'php/includes/database_handler.include.php';
                     require_once 'php/includes/general_functions.include.php';

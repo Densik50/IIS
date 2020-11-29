@@ -50,21 +50,32 @@
                 </ul>
                 
                 <?php
-                    if(isset($_SESSION["OsobaID"]))
+                    if(isset($_SESSION["UserID"]))
                     {
-                        echo   "<ul class=\"navbar-nav\">
+                        echo   "<ul class=\"navbar-nav nick\">
                                     <li class=\"nav-item dropdown bg-dark\">
-                                        <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">" . $_SESSION["userid"] . "</a>
+                                        <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">" . $_SESSION["Username"] . "</a>
                                         <div class=\"dropdown-menu bg-dark\">
-                                            <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php?user=" . $_SESSION["userid"] . "\">My profile</a>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php?user=" . $_SESSION["Username"] . "\">My profile</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"myevents.php\">My events</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"myinterprets.php\">My interprets</a>
                                             <div class=\"dropdown-divider\"></div>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php\">Edit profile</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"create_event.php\">Create event</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"add_interpret.php\">Add interpret</a>
-                                            <div class=\"dropdown-divider\"></div>
-                                            <a class=\"dropdown-item my_dropdownitem\" href=\"php/includes/logout.include.php\">Log out</a>
+                                            <div class=\"dropdown-divider\"></div>";
+
+                                            if(isset($_SESSION["admin"]))
+                                            {
+                                                echo "
+                                                
+                                                <a class=\"dropdown-item my_dropdownitem\" href=\"admin.php\">Admin panel</a>
+                                                <div class=\"dropdown-divider\"></div>
+                                                ";
+                                            }
+
+
+                                            echo "<a class=\"dropdown-item my_dropdownitem\" href=\"php/includes/logout.include.php\">Log out</a>
                                         </div>
                                     </li>
                                 </ul>";

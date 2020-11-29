@@ -73,7 +73,7 @@ function password_match($password, $password_repeat)
 function user_exists($conn, $username, $email)
 {   
     //prepared statement to prevent injection
-    $sql = "SELECT * FROM OSOBA WHERE Username = ? OR Email = ?;";
+    $sql = "SELECT * FROM USERS WHERE Username = ? OR Email = ?;";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql))
@@ -103,7 +103,7 @@ function user_exists($conn, $username, $email)
 function get_info($conn, $username, $email)
 {   
     //prepared statement to prevent injection
-    $sql = "SELECT * FROM OSOBA WHERE Username = ? OR Email = ?;";
+    $sql = "SELECT * FROM USERS WHERE Username = ? OR Email = ?;";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql))
@@ -131,10 +131,9 @@ function get_info($conn, $username, $email)
     mysqli_stmt_close($stmt);
 }
 
-function create_user($conn, $name, $username, $email, $password)
+function create_user($conn, $name, $username, $email, $password, $mobile, $address)
 {
-    //prepared statement to prevent injection
-    $sql = "INSERT INTO OSOBA (Meno, Username, Email, Password) VALUES(?, ?, ?, ?);";
+    $sql = "INSERT INTO USERS (Fullname, Username, Email, Password, Mobile, Address, is_admin, is_banned) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql))
@@ -145,7 +144,8 @@ function create_user($conn, $name, $username, $email, $password)
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssss", $name, $username, $email, $hashed_password);
+    $false = 0;
+    mysqli_stmt_bind_param($stmt, "ssssssii", $name, $username, $email, $hashed_password, $mobile, $address, $false, $false);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../../register.php?error=none");
@@ -173,9 +173,50 @@ function login_user($conn, $username, $password)
     else if($check_password === true)
     {
         session_start();
-        $_SESSION["userid"] = $userid_exists["Username"];
-        $_SESSION["OsobaID"] = $userid_exists["OsobaID"];
+        $_SESSION["Username"] = $userid_exists["Username"];
+        $_SESSION["UserID"] = $userid_exists["UserID"];
+        
+        if($userid_exists["is_admin"] === 1)
+        {
+            $_SESSION["admin"] = $userid_exists["is_admin"];
+        }
         header("location: ../../index.php");
         exit();
     }
+}
+
+function get_genres($conn)
+{
+    /* $sql = "SELECT * FROM GENRE";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../register.php?error=stmt_ue_failed");
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt); */
+
+    $sql = "SELECT * FROM GENRE";
+    $stmt = mysqli_query($conn, $sql);
+    $data = array();
+    while ($row = mysqli_fetch_array($stmt)) {
+        $data[] = $row;
+    }
+
+    return $data;
+   /*  if($row = mysqli_fetch_assoc($result))
+    {
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    } */
+    
+    mysqli_stmt_close($stmt);
 }
