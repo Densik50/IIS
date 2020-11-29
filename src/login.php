@@ -5,7 +5,7 @@
     <!-- SITE START -->
     <div class="container fullscreen-container">
         <h2>Log In</h2>
-        <form class="login-form" action="php/includes/login.include.php" method="post">
+        <form class="login-form " action="php/includes/login.include.php" method="post">
 
             <!-- USERNAME -->
             <div class="form-group row">

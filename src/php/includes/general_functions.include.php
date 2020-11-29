@@ -100,6 +100,37 @@ function user_exists($conn, $username, $email)
     mysqli_stmt_close($stmt);
 }
 
+function get_info($conn, $username, $email)
+{   
+    //prepared statement to prevent injection
+    $sql = "SELECT * FROM OSOBA WHERE Username = ? OR Email = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../register.php?error=stmt_ue_failed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_execute($stmt);
+
+    $result_date = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result_date))
+    {
+        $row["Password"] = "Restricted";
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    }
+    
+    mysqli_stmt_close($stmt);
+}
+
 function create_user($conn, $name, $username, $email, $password)
 {
     //prepared statement to prevent injection

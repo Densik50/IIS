@@ -31,10 +31,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php#events">Events <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="events.php">Events <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php#interprets">Interprets <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="interprets.php">Interprets <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
@@ -72,10 +72,10 @@
                     else
                     {
                         echo    "<ul class=\"navbar-nav\">
-                                    <li class=\"nav-item active\">
+                                    <li class=\"nav-item\">
                                         <a class=\"nav-link\" href=\"login.php\">Log In <span class=\"sr-only\">(current)</span></a>
                                     </li>
-                                    <li class=\"nav-item active\">
+                                    <li class=\"nav-item\">
                                         <a class=\"nav-link\" href=\"register.php\">Register <span class=\"sr-only\">(current)</span></a>
                                     </li>
                                 </ul>";

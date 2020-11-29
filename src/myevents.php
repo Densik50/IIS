@@ -13,7 +13,7 @@
                 require_once 'php/includes/database_handler.include.php';
                 require_once 'php/includes/general_functions.include.php';
                 
-                $userid_exists = user_exists($conn, $user, $user);
+                $userid_exists = get_info($conn, $user, $user);
 
                 //TODO pridat vypis informacii, nepridane lebo tie other informations este nie su v databazy
                 //meno

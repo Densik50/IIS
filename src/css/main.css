@@ -50,8 +50,13 @@ body{
 
 
 /* FILE */
+    .form-group{
+        margin-bottom: 10px;
+    }
+
     .fullscreen-container{
         min-height: 75vh;
+        background-color: lightgray;
     }
 
     .my_dropdownitem{
