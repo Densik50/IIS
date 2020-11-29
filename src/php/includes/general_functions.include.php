@@ -78,7 +78,7 @@ function user_exists($conn, $username, $email)
 
     if(!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("location: ../../register.php?error=stmt_ue_failed");
+        header("location: ../../register.php?error=stmt_failed");
         exit();
     }
 
@@ -100,6 +100,35 @@ function user_exists($conn, $username, $email)
     mysqli_stmt_close($stmt);
 }
 
+function event_exists($conn, $name)
+{
+    $sql = "SELECT * FROM EVENTS WHERE NAME = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../create_event.php?error=stmt_failed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $name);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result))
+    {
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function get_info($conn, $username, $email)
 {   
     //prepared statement to prevent injection
@@ -108,7 +137,7 @@ function get_info($conn, $username, $email)
 
     if(!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("location: ../../register.php?error=stmt_ue_failed");
+        header("location: ../../register.php?error=stmt_failed");
         exit();
     }
 
@@ -138,7 +167,7 @@ function create_user($conn, $name, $username, $email, $password, $mobile, $addre
 
     if(!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("location: ../../register.php?error=stmt_cu_failed");
+        header("location: ../../register.php?error=stmt_failed");
         exit();
     }
 
@@ -150,6 +179,19 @@ function create_user($conn, $name, $username, $email, $password, $mobile, $addre
     mysqli_stmt_close($stmt);
     header("location: ../../register.php?error=none");
     exit();
+}
+
+function create_event($conn, $name, $describtion, $address, $start_date, $start_time, $end_date, $end_time, $price, $maxcapacity, $owner)
+{
+    $capacity = 0;
+    $sql = "INSERT INTO EVENTS (Name, Describtion, Address, Start_date, Start_time, End_date, End_time, Price, Capacity, MaxCapacity, UserID)
+                VALUES ($name, $describtion, $address, $start_date, $start_time, $end_date, $end_time,  $price, $capacity, $maxcapacity, $owner);";
+
+    mysqli_query($conn, $sql);
+
+    $sql = "SELECT * FROM EVENTS WHERE Name = $name;";
+    $result = mysqli_query($conn, $sql);
+    return $result;
 }
 
 function login_user($conn, $username, $password)
@@ -185,38 +227,20 @@ function login_user($conn, $username, $password)
     }
 }
 
+function create_eventgenre($conn, $eventid, $genreid)
+{
+    $sql = "INSERT INTO EVENT_GENRES (EventID, GenreID) VALUES ($eventid, $genreid);";
+    mysqli_query($conn, $sql);
+}
+
 function get_genres($conn)
 {
-    /* $sql = "SELECT * FROM GENRE";
-    $stmt = mysqli_stmt_init($conn);
-
-    if(!mysqli_stmt_prepare($stmt, $sql))
-    {
-        header("location: ../../register.php?error=stmt_ue_failed");
-        exit();
-    }
-
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt); */
-
     $sql = "SELECT * FROM GENRE";
     $stmt = mysqli_query($conn, $sql);
     $data = array();
     while ($row = mysqli_fetch_array($stmt)) {
         $data[] = $row;
     }
-
-    return $data;
-   /*  if($row = mysqli_fetch_assoc($result))
-    {
-        return $row;
-    }
-    else
-    {
-        $result = false;
-        return $result;
-    } */
-    
+    return $data;    
     mysqli_stmt_close($stmt);
 }

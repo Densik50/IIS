@@ -97,8 +97,8 @@
                                 foreach($data as $row):
                                     echo "
                                         <div class=\"form-check\">
-                                            <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_rock\" name=\"checkbox_rock\">
-                                            <label class=\"form-check-label\" for=\"checkbox_rock\">
+                                            <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_" . $row["GenreName"] ."\" name=\"checkbox_" . $row["GenreName"] ."\">
+                                            <label class=\"form-check-label\" for=\"checkbox_" . $row["GenreName"] ."\">
                                             " . $row["GenreName"] ."
                                             </label>
                                         </div>
