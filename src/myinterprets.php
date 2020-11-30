@@ -31,8 +31,8 @@
                         echo "
                             <tr>
                                 <th scope=\"row\">$id</th>
-                                <td> <a href=\"interpret.php?=$id\">$name</a></td>
-                                <td><a class=\"\" href=\"manage_interpret.php?=$id\" role=\"button\">Manage</a></td>
+                                <td> <a href=\"interpret.php?id=$id\">$name</a></td>
+                                <td><a class=\"\" href=\"manage_interpret.php?id=$id\" role=\"button\">Manage</a></td>
                             </tr>
                         ";
                     endforeach;

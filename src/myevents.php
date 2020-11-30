@@ -25,6 +25,7 @@
                                 <th scope=\"col\">Reservations</th>
                                 <th scope=\"col\">Price</th>
                                 <th scope=\"col\"></th>
+                                <th scope=\"col\"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,13 +43,14 @@
                         echo "
                             <tr>
                                 <th scope=\"row\">$id</th>
-                                <td> <a href=\"event.php?=$id\">$name</a></td>
+                                <td> <a href=\"event.php?id=$id\">$name</a></td>
                                 <td>$starts</td>
                                 <td>$ends</td>
                                 <td>$capacity</td>
                                 <td>$reserved</td>
                                 <td>$price (&euro;)</td>
-                                <td><a class=\"\" href=\"manage_event.php?=$id\" role=\"button\">Manage</a></td>
+                                <td><a class=\"\" href=\"manage_event.php?id=$id\" role=\"button\">Manage</a></td>
+                                <td><a class=\"\" href=\"cashier_panel.php?id=$id\" role=\"button\">Cashier menu</a></td>
                             </tr>
                         ";
                     endforeach;

@@ -7,6 +7,17 @@ body{
     min-width: 160px;
 }
 
+.card{
+    width: 100%;
+}
+
+.event-btn
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
 /* INDEX FILE */
     .carouselimage{
         height: 85vh;
@@ -22,7 +33,7 @@ body{
         padding: 0;
     }
 
-    .card{
+    .card-index{
         max-width: 280px;
         max-height: 415px;
         min-width: 280px;
@@ -77,6 +88,10 @@ body{
     }
 
 
+.search
+{
+    max-width: 215px;
+}
 
     .abtn{
         text-decoration: none;

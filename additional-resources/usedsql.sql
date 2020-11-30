@@ -24,7 +24,7 @@ CREATE TABLE EVENTS (
     Start_time varchar(32) NOT NULL,
     End_date varchar(32) NOT NULL,
     End_time varchar(32) NOT NULL,
-    Price varchar(16) NOT NULL,
+    Price float(24) NOT NULL,
     Capacity int NOT NULL,
     Reserved int NOT NULL,
     MaxCapacity int NOT NULL,

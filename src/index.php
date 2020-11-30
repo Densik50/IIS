@@ -58,90 +58,40 @@
     <div class="container">
         <!-- EVENTS SECTION -->
         <div class="section bg-dark" id="events">
-            <h2 class="text-center text-uppercase">Upcoming events</h2>
+            <h2 class="text-center text-uppercase">Newest added events:</h2>
             <div class="container row">
+                <?php 
+                    require_once "php/includes/database_handler.include.php";
+                    require_once "php/includes/general_functions.include.php";
 
-                <!-- CARD 1 -->
-                <div class="card mx-auto" style="width: 18rem;">
-                    <img src="img/carousel/carousel1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    <div class="card-footer">
-                        in X days
-                    </div>
-                </div>
-                
-                <!-- CARD 2 -->
-                <div class="card mx-auto" style="width: 18rem;">
-                    <img src="img/carousel/carousel1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    <div class="card-footer">
-                        in X days
-                    </div>
-                </div>
+                    $data = six_newest_events($conn);
 
-                <!-- CARD 3 -->
-                <div class="card mx-auto" style="width: 18rem;">
-                    <img src="img/carousel/carousel1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    <div class="card-footer">
-                        in X days
-                    </div>
-                </div>
+                    foreach($data as $event):
+                        $eventid = $event["EventID"];
+                        $evetname = $event["Name"];
+                        $describtion =  $event["Describtion"];
+                        $starts = $event["Start_date"]." ".$event["Start_time"];
+                        echo "
+                        <div class=\"card-index mx-auto card-index\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 60px;\">
+                            <img src=\"img/carousel/carousel1.jpg\" class=\"card-img-top\">
+                            <div class=\"card-body\">
+                                <h5 class=\"card-title\">$evetname</h5>
+                                <p class=\"card-text\">$describtion</p>
+                                <a href=\"event.php?id=$eventid\" class=\"btn btn-primary\">More info</a>
+                            </div>
+                            <div class=\"card-footer bg-light\">
+                                $starts
+                            </div>
+                        </div>
 
-                <!-- CARD 4 -->
-                <div class="card mx-auto" style="width: 18rem;">
-                    <img src="img/carousel/carousel1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    <div class="card-footer">
-                        in X days
-                    </div>
-                </div>
-
-                <!-- CARD 5 -->
-                <div class="card mx-auto" style="width: 18rem;">
-                    <img src="img/carousel/carousel1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    <div class="card-footer">
-                        in X days
-                    </div>
-                </div>
-
-                <!-- CARD 6 -->
-                <div class="card card mx-auto" style="width: 18rem;">
-                    <img src="img/carousel/carousel1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    <div class="card-footer">
-                        in X days
-                    </div>
-                </div>
-
+                        ";
+                    endforeach;
+                    echo "
             </div>
-            
+                    ";
 
+                    echo "<div class=\"text-center\"> <a href=\"events.php\" class=\"btn btn-primary event-btn\">More events</a> </div>";
+                ?>
         </div>
         <!-- EVENTS SECTION END -->
         <!-- INTERPRETS SECTION -->

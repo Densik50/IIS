@@ -42,7 +42,7 @@
                     </li>
                 </ul>
 
-                <ul class="navbar-nav mr-auto">
+                <!-- <ul class="navbar-nav mr-auto">
                     <form class="form-inline my-2 my-lg-0">
                         <li class="nav-item">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -51,7 +51,7 @@
                             <button class="btn my-2 my-sm-0 nav-link" type="submit">Search</button>
                         </li>
                     </form>
-                </ul>
+                </ul> -->
                 
                 <?php
                     if(isset($_SESSION["UserID"]))

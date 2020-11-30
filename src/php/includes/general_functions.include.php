@@ -100,6 +100,36 @@ function user_exists($conn, $username, $email)
     mysqli_stmt_close($stmt);
 }
 
+function user_exists_byid($conn, $id)
+{   
+    //prepared statement to prevent injection
+    $sql = "SELECT * FROM USERS WHERE UserID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../event.php?error=stmt_failed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    $result_date = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result_date))
+    {
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    }
+    
+    mysqli_stmt_close($stmt);
+}
+
 function event_exists($conn, $name)
 {
     $sql = "SELECT * FROM EVENTS WHERE Name = ?;";
@@ -112,6 +142,35 @@ function event_exists($conn, $name)
     }
 
     mysqli_stmt_bind_param($stmt, "s", $name);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result))
+    {
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function event_exists_byid($conn, $id)
+{
+    $sql = "SELECT * FROM EVENTS WHERE EventID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../event.php?error=stmt_failed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
 
     $result = mysqli_stmt_get_result($stmt);
@@ -338,6 +397,92 @@ function get_all_events($conn, $order_by, $asc_dec, $where)
 
     while($row = mysqli_fetch_assoc($result))
     {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function get_all_interprets($conn, $order_by, $asc_dec, $where)
+{
+    $query = "SELECT * FROM INTERPRET $where ORDER BY `INTERPRET`.`$order_by` $asc_dec;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function cashiers_byeventid($conn, $id)
+{
+    $query = "SELECT * FROM EVENT_CASHIERS WHERE EventID = $id;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function events_bycashierid($conn, $id)
+{
+    $query = "SELECT * FROM EVENT_CASHIERS WHERE UserID = $id;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function is_cashier($conn, $eventid, $userid)
+{
+    $query = "SELECT * FROM EVENT_CASHIERS WHERE EventID = $eventid AND UserID = $userid;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+
+    if(count($data) == 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+function six_newest_events($conn)
+{
+    $query = "SELECT * FROM EVENTS ORDER BY `EVENTS`.`EventID` DESC;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+    $i = 0;
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        if($i == 6) break;
+        $i++;
         $data[] = $row;
     }
     return $data;
