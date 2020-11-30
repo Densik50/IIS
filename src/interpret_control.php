@@ -29,7 +29,7 @@ while ($row = mysqli_fetch_array($stmt)) {
         </td>
         <td class="pr-3 py-4 ">
             <button  type="submit" class="btn btn-primary">
-                <a href='delete_interpret.php?id="<?=$row['InterpretID']?>"'>Delete interpret</a>
+                <a href='php/includes/delete_interpret.php?id="<?=$row['InterpretID']?>"'>Delete interpret</a>
             </button>
         </td>
     </tr>

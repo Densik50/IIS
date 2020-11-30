@@ -50,10 +50,10 @@ while ($row = mysqli_fetch_array($stmt)) {
             <button type="submit" class="btn btn-secondary abtn">
             <?php 
                     if($row['is_banned']==0){
-                        echo "<a href='ban_user.php?id=",$row['UserID'],"'>Ban user</a>";
+                        echo "<a href='php/includes/ban_user.php?id=",$row['UserID'],"'>Ban user</a>";
                     }
                     else{
-                        echo "<a href='ban_user_no.php?id=",$row['UserID'],"'>Unban user</a>";
+                        echo "<a href='php/includes/ban_user_no.php?id=",$row['UserID'],"'>Unban user</a>";
                     }
                 ?>
             </button>
@@ -62,17 +62,17 @@ while ($row = mysqli_fetch_array($stmt)) {
             <button type="button" class="btn btn-secondary abtn" data-toggle="modal" data-target="#exampleModal">
                 <?php 
                     if($row['is_admin']==0){
-                        echo "<a href='set_admin.php?id=",$row['UserID'],"'>Set as admin</a>";
+                        echo "<a href='php/includes/set_admin.php?id=",$row['UserID'],"'>Set as admin</a>";
                     }
                     else{
-                        echo "<a href='set_regular.php?id=",$row['UserID'],"'>Set as regular</a>";
+                        echo "<a href='php/includes/set_regular.php?id=",$row['UserID'],"'>Set as regular</a>";
                     }
                 ?>
             </button>     
         </td>
         <td class="pr-3 py-4">
             <button type="button" class="btn btn-primary abtn" data-toggle="modal" data-target="#exampleModal">
-                <a href='delete_user.php?id="<?=$row['UserID']?>"'>Delete user</a>
+                <a href='php/includes/delete_user.php?id="<?=$row['UserID']?>"'>Delete user</a>
             </button>     
         </td>
     </tr>

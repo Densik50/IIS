@@ -24,7 +24,7 @@ while ($row = mysqli_fetch_array($stmt)) {
         <td class="pr-3 py-4 "><?=$row['Address']?></td>
         <td class="pr-3 py-4 ">
             <button  type="submit" class="btn btn-primary">
-                <a href='delete_event.php?id="<?=$row['EventID']?>"'>Delete event</a>
+                <a href='php/includes/delete_event.php?id="<?=$row['EventID']?>"'>Delete event</a>
             </button>
         </td>
     </tr>
