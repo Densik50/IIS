@@ -1,6 +1,16 @@
         <!-- FOOTER -->
         <footer class="bg-dark">
-         text
+            <div class="container text-white text-center">
+                <div class="row"><div class="col" style="padding-top: 2%;">Authors:</div></div>
+                <div class="row">
+                    <div style="margin-top: 5%;" class="col">
+                        Matej Cimmerman - xcimme00
+                    </div>
+                    <div style="margin-top: 5%;" class="col">
+                        Daniel Paulovic - xpaulo04
+                    </div>
+                </div>
+            </div>
         </footer>
         <!-- FOOTER END -->
 

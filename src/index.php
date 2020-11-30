@@ -57,7 +57,7 @@
     <!-- SITE START -->
     <div class="container">
         <!-- EVENTS SECTION -->
-        <div class="section bg-dark" id="events">
+        <div class="bg-dark" id="events">
             <h2 class="text-center text-uppercase">Newest added events:</h2>
             <div class="container row">
                 <?php 
@@ -65,14 +65,14 @@
                     require_once "php/includes/general_functions.include.php";
 
                     $data = six_newest_events($conn);
-
+                    //TODO vypisovanie zanrov podla db
                     foreach($data as $event):
                         $eventid = $event["EventID"];
                         $evetname = $event["Name"];
                         $describtion =  $event["Describtion"];
                         $starts = $event["Start_date"]." ".$event["Start_time"];
                         echo "
-                        <div class=\"card-index mx-auto card-index\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 60px;\">
+                        <div class=\"card-index mx-auto card-event-index\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 60px;\">
                             <img src=\"img/carousel/carousel1.jpg\" class=\"card-img-top\">
                             <div class=\"card-body\">
                                 <h5 class=\"card-title\">$evetname</h5>
@@ -90,20 +90,72 @@
             </div>
                     ";
 
-                    echo "<div class=\"text-center\"> <a href=\"events.php\" class=\"btn btn-primary event-btn\">More events</a> </div>";
+                    echo "<div class=\"text-center\"> <a style=\"margin-bottom: 25px;\" href=\"events.php\" class=\"btn btn-primary event-btn\">More events</a> </div>";
                 ?>
         </div>
         <!-- EVENTS SECTION END -->
         <!-- INTERPRETS SECTION -->
-        <div class="section bg-light" id="interprets">
+        <div class="bg-light" id="interprets">
+        <h2 class="text-center text-uppercase">Newest added interprets:</h2>
+            <div class="container row">
+                <?php 
+                    require_once "php/includes/database_handler.include.php";
+                    require_once "php/includes/general_functions.include.php";
 
+                    $data = six_newest_interprets($conn);
+
+                    foreach($data as $interpret):
+                        $interpretid = $interpret["InterpretID"];
+                        $interpretname = $interpret["Name"];
+                        //TODO vypisovanie zanrov podla db
+                        echo "
+                        <div class=\"card-index mx-auto card-interpret-index\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 60px;\">
+                            <img src=\"img/carousel/carousel1.jpg\" class=\"card-img-top\">
+                            <div class=\"card-body\">
+                                <h5 class=\"card-title\">$interpretname</h5>
+                                <a href=\"interpret.php?id=$interpretid\" class=\"btn btn-primary\">More info</a>
+                            </div>
+                            <div class=\"card-footer bg-light\">
+                                Rock, Metal, Rap...
+                            </div>
+                        </div>
+
+                        ";
+                    endforeach;
+                    echo "
+            </div>
+                    ";
+
+                    echo "<div class=\"text-center\"> <a style=\"margin-bottom: 25px;\" href=\"interprets.php\" class=\"btn btn-primary event-btn\">More interprets</a> </div>";
+                ?>
         </div>
         <!-- INTERPRETS SECTION END -->
         <div class="bg-dark" id="are_u_organizer">
-
+            <div class="container">
+                <div class="row text-center text-white">
+                    <div style="margin-top: 22vh;" class="col">
+                        Are you an organizer?
+                    </div>
+                    <div style="margin-top: 22vh;" class="col">
+                        Add your even simply!
+                    </div>
+                    <div style="margin-top: 22vh;" class="col">
+                        It was never easier!
+                    </div>
+                </div>
+            </div>
+            <div class="text-center"> <a style="margin-top:20vh; margin-bottom: 25px;" href="create_event.php" class="btn btn-primary event-btn">Create event</a> </div>
         </div>
         <div class="bg-light" id="partners">
-
+            <div class="container">
+                <div class="text-center">
+                <div class="row text-center">
+                    <div style="margin-top: 22vh;" class="col">
+                        Partners: This is VUT project for IIS.
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- SITE END -->

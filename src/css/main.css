@@ -9,6 +9,8 @@ body{
 
 .card{
     width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .event-btn
@@ -33,11 +35,21 @@ body{
         padding: 0;
     }
 
-    .card-index{
+    .card-event-index{
         max-width: 280px;
         max-height: 415px;
         min-width: 280px;
         min-height: 415px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+    }
+
+    .card-interpret-index{
+        max-width: 280px;
+        max-height: 340px;
+        min-width: 280px;
+        min-height: 340px;
         margin-top: 20px;
         margin-bottom: 20px;
         background-color: white;

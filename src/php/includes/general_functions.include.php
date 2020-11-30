@@ -487,3 +487,21 @@ function six_newest_events($conn)
     }
     return $data;
 }
+
+function six_newest_interprets($conn)
+{
+    $query = "SELECT * FROM INTERPRET ORDER BY `INTERPRET`.`InterpretID` DESC;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+    $i = 0;
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        if($i == 6) break;
+        $i++;
+        $data[] = $row;
+    }
+    return $data;
+}
