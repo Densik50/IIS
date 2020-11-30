@@ -1,5 +1,5 @@
 body{
-    font-family: sans-serif;
+    font-family: 'Montserrat',sans-serif;
     min-height: 100%;
 }
 
@@ -76,3 +76,37 @@ body{
         }
     }
 
+
+
+    .abtn{
+        text-decoration: none;
+        color: black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0 0 0;
+        table-layout: fixed;
+      }
+      table td, table th {
+        height: 40px;
+        max-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        padding: 10px;
+      }
+      
+      table tr:hover {
+        background-color: white;
+        overflow: visible;
+        white-space: nowrap;
+      }
+      
+      tr > td:hover {
+          overflow: visible;
+          white-space: unset;
+          background-color: solid;
+      }
