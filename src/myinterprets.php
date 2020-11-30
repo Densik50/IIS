@@ -4,25 +4,48 @@
 
 
     <!-- SITE START -->
-    <div class="container fullscreen-container">
-    <?php
+    <div class="container fullscreen-container wider-container">
+        <?php
             if(isset($_SESSION["UserID"]))
             {
-                $user = $_SESSION["Username"];
-
                 require_once 'php/includes/database_handler.include.php';
                 require_once 'php/includes/general_functions.include.php';
                 
-                $userid_exists = get_info($conn, $user, $user);
+                if(count($my_interprets= get_my_interprets($conn, $_SESSION["UserID"])) > 0)
+                {   
+                    echo "
+                    <table class=\"table table-sm\">
+                        <thead>
+                            <tr>
+                                <th scope=\"col\">ID</th>
+                                <th scope=\"col\">Name</th>
+                                <th scope=\"col\"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    ";
+                    foreach($my_interprets as $event):
+                        $id = $event["InterpretID"];
+                        $name = $event["Name"];
 
-                //TODO pridat vypis informacii, nepridane lebo tie other informations este nie su v databazy
-                //meno
-                echo "<h2>" . $userid_exists["Username"] . "'s interprets:</h2>";
-
-                //popis - nejaky <p>
-
-                //email
-
+                        echo "
+                            <tr>
+                                <th scope=\"row\">$id</th>
+                                <td> <a href=\"interpret.php?=$id\">$name</a></td>
+                                <td><a class=\"\" href=\"manage_interpret.php?=$id\" role=\"button\">Manage</a></td>
+                            </tr>
+                        ";
+                    endforeach;
+                    echo "
+                        </tbody>
+                    </table>
+                    
+                    ";
+                }
+                else
+                {
+                    echo "You haven't created any interprets yet.";
+                }
             }
             else
             {

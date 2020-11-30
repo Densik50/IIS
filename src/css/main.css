@@ -16,10 +16,6 @@ body{
         min-height: 99vh;
     }
 
-    #events{
-
-    }
-
     .row{
         width: 100%;
         margin: 0;
@@ -34,10 +30,6 @@ body{
         margin-top: 20px;
         margin-bottom: 20px;
         background-color: white;
-    }
-
-    #interprets{
-
     }
 
     #are_u_organizer{
@@ -61,6 +53,10 @@ body{
     .fullscreen-container{
         min-height: 75vh;
         background-color: lightgray;
+    }
+
+    .wider-container{
+        min-width: 80%;
     }
 
     .my_dropdownitem{

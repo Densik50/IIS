@@ -102,7 +102,7 @@ function user_exists($conn, $username, $email)
 
 function event_exists($conn, $name)
 {
-    $sql = "SELECT * FROM EVENTS WHERE NAME = ?;";
+    $sql = "SELECT * FROM EVENTS WHERE Name = ?;";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql))
@@ -129,26 +129,54 @@ function event_exists($conn, $name)
     mysqli_stmt_close($stmt);
 }
 
-function get_info($conn, $username, $email)
-{   
-    //prepared statement to prevent injection
-    $sql = "SELECT * FROM USERS WHERE Username = ? OR Email = ?;";
+function get_my_interprets($conn, $myid)
+{
+    $query = "SELECT * FROM INTERPRET WHERE Owner = $myid;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function get_my_events($conn, $myid)
+{
+    $query = "SELECT * FROM EVENTS WHERE UserID = $myid;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function interpret_exists($conn, $name)
+{
+    $sql = "SELECT * FROM INTERPRET WHERE Name = ?;";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("location: ../../register.php?error=stmt_failed");
+        header("location: ../../add_intepret.php?error=stmt_failed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_bind_param($stmt, "s", $name);
     mysqli_stmt_execute($stmt);
 
-    $result_date = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-    if($row = mysqli_fetch_assoc($result_date))
+    if($row = mysqli_fetch_assoc($result))
     {
-        $row["Password"] = "Restricted";
         return $row;
     }
     else
@@ -156,7 +184,7 @@ function get_info($conn, $username, $email)
         $result = false;
         return $result;
     }
-    
+
     mysqli_stmt_close($stmt);
 }
 
@@ -183,15 +211,24 @@ function create_user($conn, $name, $username, $email, $password, $mobile, $addre
 
 function create_event($conn, $name, $describtion, $address, $start_date, $start_time, $end_date, $end_time, $price, $maxcapacity, $owner)
 {
-    $capacity = 0;
-    $sql = "INSERT INTO EVENTS (Name, Describtion, Address, Start_date, Start_time, End_date, End_time, Price, Capacity, MaxCapacity, UserID)
-                VALUES ($name, $describtion, $address, $start_date, $start_time, $end_date, $end_time,  $price, $capacity, $maxcapacity, $owner);";
+    $zero = 0;
+    $query = "INSERT INTO EVENTS (Name, Describtion, Address, Start_date, Start_time, End_date, End_time, Price, Capacity, Reserved, MaxCapacity, UserID)
+                VALUES ('$name', '$describtion', '$address', '$start_date', '$start_time', '$end_date', '$end_time', $price, $zero, $zero, $maxcapacity, $owner);";
+    //create new event
+    if (mysqli_query($conn, $query) === FALSE) {
+        header("location: ../../create_event.php?error=stmt_failed&errordes=".mysqli_error($conn));
+        exit();
+    }
+}
 
-    mysqli_query($conn, $sql);
-
-    $sql = "SELECT * FROM EVENTS WHERE Name = $name;";
-    $result = mysqli_query($conn, $sql);
-    return $result;
+function add_interpret($conn, $name, $owner)
+{
+    $query = "INSERT INTO INTERPRET(Owner, Name) VALUES ($owner, '$name');";
+    //add new interpret
+    if (mysqli_query($conn, $query) === FALSE) {
+        header("location: ../../add_interpret.php?error=stmt_failed&errordes=".mysqli_error($conn));
+        exit();
+    }
 }
 
 function login_user($conn, $username, $password)
@@ -227,10 +264,56 @@ function login_user($conn, $username, $password)
     }
 }
 
-function create_eventgenre($conn, $eventid, $genreid)
+function create_eventgenres($conn, $checkboxdata, $name)
 {
-    $sql = "INSERT INTO EVENT_GENRES (EventID, GenreID) VALUES ($eventid, $genreid);";
-    mysqli_query($conn, $sql);
+    $sqlquery = "SELECT EventID FROM EVENTS WHERE Name = '$name';";
+    if ($result = mysqli_query($conn, $sqlquery)) {
+        while($row = mysqli_fetch_assoc($result))
+        {
+            foreach($checkboxdata as $element):
+                $var = $row["EventID"];
+                $sql = "INSERT INTO EVENT_GENRES (EventID, GenreID) VALUES ($var, $element);";
+                if(!mysqli_query($conn, $sql))
+                {
+                    header("location: ../../create_event.php?error=failed_adding_genre");
+                    exit();
+                }
+            endforeach;
+            header("location: ../../create_event.php?error=none");
+            exit();
+        } 
+    }
+    else
+    {
+        header("location: ../../create_event.php?error=doesntexist");
+        exit();
+    }
+}
+
+function create_interpretgenres($conn, $checkboxdata, $name)
+{
+    $sqlquery = "SELECT InterpretID FROM INTERPRET WHERE Name = '$name';";
+    if ($result = mysqli_query($conn, $sqlquery)) {
+        while($row = mysqli_fetch_assoc($result))
+        {
+            foreach($checkboxdata as $element):
+                $var = $row["InterpretID"];
+                $sql = "INSERT INTO INTERPRET_GENRES (InterpretID, GenreID) VALUES ($var, $element);";
+                if(!mysqli_query($conn, $sql))
+                {
+                    header("location: ../../add_interpret.php?error=failed_adding_genre");
+                    exit();
+                }
+            endforeach;
+            header("location: ../../add_interpret.php?error=none");
+            exit();
+        } 
+    }
+    else
+    {
+        header("location: ../../add_interpret.php?error=doesntexist");
+        exit();
+    }
 }
 
 function get_genres($conn)
@@ -243,4 +326,19 @@ function get_genres($conn)
     }
     return $data;    
     mysqli_stmt_close($stmt);
+}
+
+function get_all_events($conn, $order_by, $asc_dec, $where)
+{
+    $query = "SELECT * FROM EVENTS $where ORDER BY `EVENTS`.`$order_by` $asc_dec;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
 }

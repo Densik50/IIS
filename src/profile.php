@@ -10,8 +10,47 @@
             {
                 require_once 'php/includes/database_handler.include.php';
                 require_once 'php/includes/general_functions.include.php';
-                
-                $userid_exists = get_info($conn, $user, $user);
+
+                if($userid_exists = user_exists($conn, $_GET["user"], $_GET["user"]))
+                {
+                    $username = $userid_exists["Username"];
+                    $fullname = $userid_exists["Fullname"];
+                    $email = $userid_exists["Email"];
+                    $mobile = $userid_exists["Mobile"];
+                    $address = $userid_exists["Address"];
+                    echo "
+                    <table class=\"table table-sm\">
+                        <tr>    
+                            <th scope=\"col\">Username:</th>
+                            <td>$username</td>
+                        </tr>
+                        <tr>    
+                            <th scope=\"col\">Full name:</th>
+                            <td>$fullname</td>
+                        </tr>
+                        <tr>    
+                            <th scope=\"col\">Contact mail:</th>
+                            <td>$email</td>
+                        </tr>
+                        <tr>    
+                            <th scope=\"col\">Phone number:</th>
+                            <td>$mobile</td>
+                        </tr>
+                        <tr>    
+                            <th scope=\"col\">Public Address:</th>
+                            <td>$address</td>
+                        </tr>
+                    </table>
+                    ";
+                    
+                    
+                    
+                    //$userid_exists["Username"];
+                }
+                else
+                {
+                    echo "User doesnt exist.";
+                }
             }
             else   
             {
@@ -23,15 +62,6 @@
                     require_once 'php/includes/general_functions.include.php';
                     
                     $userid_exists = user_exists($conn, $user, $user);
-
-                    //TODO pridat vypis informacii, nepridane lebo tie other informations este nie su v databazy
-                    //meno
-                    echo "<h2>" . $userid_exists["Username"] . "'s profile page.</h2>";
-
-                    //popis - nejaky <p>
-
-                    //email
-
                 }
                 else
                 {

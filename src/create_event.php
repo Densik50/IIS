@@ -43,7 +43,7 @@
                         <div class=\"form-group row\">
                             <label for=\"startdate\" class=\"col-sm-2 col-form-label\">Start date: </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"date\" name=\"startdate\" id=\"startdate\">
+                                <input type=\"text\" name=\"startdate\" id=\"startdate\" placeholder=\"DD.MM.YYYY\">
                             </div>
                         </div>
                         <!-- START DATE END -->
@@ -52,7 +52,7 @@
                         <div class=\"form-group row\">
                             <label for=\"starttime\" class=\"col-sm-2 col-form-label\">Start time(12H format): </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"time\" name=\"starttime\" id=\"starttime\">
+                                <input type=\"text\" name=\"starttime\" id=\"starttime\" placeholder=\"HH:MM\">
                             </div>
                         </div>
                         <!-- START TIME END -->
@@ -61,7 +61,7 @@
                         <div class=\"form-group row\">
                             <label for=\"enddate\" class=\"col-sm-2 col-form-label\">End date: </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"date\" name=\"enddate\" id=\"enddate\">
+                                <input type=\"text\" name=\"enddate\" id=\"enddate\" placeholder=\"DD.MM.YYYY\">
                             </div>
                         </div>
                         <!-- END DATE END -->
@@ -70,7 +70,7 @@
                         <div class=\"form-group row\">
                             <label for=\"endtime\" class=\"col-sm-2 col-form-label\">End time(12H format): </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"time\" name=\"endtime\" id=\"endtime\">
+                                <input type=\"text\" name=\"endtime\" id=\"endtime\" placeholder=\"HH:MM\">
                             </div>
                         </div>
                         <!-- END TIME END -->
@@ -84,7 +84,7 @@
                 
                         <!-- GENRES -->
                         <div class=\"form-group row\">
-                            <div class=\"col-sm-2\">Genres(atleast 1):</div>
+                            <div class=\"col-sm-2\">Genres:</div>
                             <div class=\"col-sm-10\">
                             ";
 

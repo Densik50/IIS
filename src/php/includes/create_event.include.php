@@ -10,7 +10,7 @@ if(isset($_POST["submit"]))
     $address = $_POST["address"];
     $startdate = $_POST["startdate"];
     $starttime = $_POST["starttime"];
-    $enddate = $_POST["endtime"];
+    $enddate = $_POST["enddate"];
     $endtime = $_POST["endtime"];
     $poster = $_POST["poster"];
     $maxcap = $_POST["maxcap"];
@@ -27,29 +27,24 @@ if(isset($_POST["submit"]))
 
     if(event_exists($conn, $name) === true)
     {
-        header("location: ../../create_event.php?error=event_already_exists");
+        header("location: ../../create_event.php?error=already_exists");
         exit();
     }
     session_start();
-    $eventresult = create_event($conn, $name, $describtion, $address, $startdate, $starttime, $enddate, $endtime, $price, $maxcap, $_SESSION["Username"]);
-    
+    create_event($conn, $name, $describtion, $address, $startdate, $starttime, $enddate, $endtime, $price, $maxcap, $_SESSION["UserID"]);
     $data = get_genres($conn);
+    $checkboxdata = array();
     foreach($data as $row):
         if(isset($_POST["checkbox_".$row["GenreName"]]))
         {
+            array_push($checkboxdata, $row["GenreID"]);
             $checkbox_result = $_POST["checkbox_".$row["GenreName"]];
-            if($checkbox_result == 'Yes')
-            {
-                create_eventgenre($conn, $eventid["EventID"], $row["GenreID"]);
-            }
         }
     endforeach;
-
-    header("location: ../../create_event.php?error=none");
-    exit();
+    create_eventgenres($conn, $checkboxdata, $name);
 }
 else
 {
-    header("location: ../../register.php");
+    header("location: ../../create_event.php");
     exit();
 }
