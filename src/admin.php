@@ -1,9 +1,10 @@
 <?php
     include_once 'header.php';
+    include_once 'left_bar.php';
 ?>
 
 <style>
-     a{
+    a{
         text-decoration: none;
         color: black;
         font-weight: 600;
@@ -28,12 +29,25 @@
 
     <!-- SITE START -->
 
-    <div class="lala"> <?php
-        include_once 'left_bar.php';
-    ?></div> 
     
+    
+
     <div class="container fullscreen-container" id="admincon" style="overflow:auto; height:0px">
     
+    <!-- Displaying administration sections in container of admin.php-->
+    <script>
+        $(document).ready(function(){
+            $('#sb li').click(function(){
+            $('#admincon').load($(this).attr("id")+'.php', function() {
+                $('#admincon').fadeIn('slow') ;
+                });
+            return false;
+            });
+        })
+    </script>
+
+    
+
 
     <?php            
         //suppress notice in this php   
@@ -82,39 +96,55 @@
         }
     ?>
     
-
-    <!-- Displaying administration sections in container of admin.php-->
-    <script>
-        $(document).ready(function(){
-            $('#sb li').click(function(){
-            $('#admincon').load($(this).attr("id")+'.php', function() {
-                $('#admincon').fadeIn('slow') ;
-                });
-            return false;
-            });
-        })
-    </script>
-
     <?php
-            if(isset($_SESSION["userid"]))
+
+
+        if(isset($_SESSION["UserID"]))
+        {
+            $user_data = get_info($_SESSION["UserID"]);
+            if($_SESSION["is_admin"] === 0)
             {
-                $user_data = get_info($_SESSION["userid"]);
-                if($user_data["admin"] === false)
-                {
-                    echo "Restricted access!";
-                }
-                else
-                {
-                    
-                }
+                echo "Restricted access!";
             }
             else
             {
-                header("location: login.php");
-                exit();
+                
             }
-        ?>
+        }
+        else
+        {
+            header("location: login.php");
+            exit();
+        }
+    ?>
+    
+
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
+</div>
+
+    
+    </div>
+
+    
     <!-- SITE END -->
 
 <?php

@@ -1,5 +1,5 @@
 <?php
-    include_once 'php/includes/database_handler.include.php';
+    include_once 'database_handler.include.php';
 
    
 
@@ -17,7 +17,7 @@
     if (mysqli_query($conn, $sql)) 
     {
         mysqli_close($conn);
-        header('Location: admin.php?boo=1');
+        header('Location: ../../admin.php?boo=1');
         exit;
     } 
     else 

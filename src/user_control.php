@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_array($stmt)) {
 <?php foreach($data as $row): ?>  
     <tr class="">
         <td id="idtd" class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><?=$row['UserID']?></span></td>
-        <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><a href="user.php?user=<?=$row['Username']?>"><?=$row['Username']?></a></span></td>
+        <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><a href="profile.php?user=<?=$row['Username']?>"><?=$row['Username']?></a></span></td>
         <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><?=$row['Fullname']?></span></td>
         <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><?=$row['Email']?></span></td>
         <td class="pr-2 py-4"><span class="border-left border-bottom border-dark rounded px-2 py-2">
@@ -80,25 +80,12 @@ while ($row = mysqli_fetch_array($stmt)) {
 </table>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Delete user</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
+
+
+
 
 <?php
    

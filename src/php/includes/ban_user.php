@@ -1,6 +1,6 @@
 
 <?php
-    include_once 'php/includes/database_handler.include.php';
+    include_once 'database_handler.include.php';
 
    
     //get id attribute from url set by BAN USER button in user_control
@@ -22,7 +22,7 @@
 
         //we go back to admin.php and set boo value to 1 - script in admin.php will know what div to load into page's container
         //why? we dont want admin to open a section from leftbar again and again after every action with users
-        header('Location: admin.php?boo=1'); 
+        header('Location: ../../admin.php?boo=1'); 
         exit;
 
     } 
