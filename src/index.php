@@ -15,8 +15,7 @@
             <div class="carousel-item active">
                 <img src="img/carousel/carousel1.jpg" class="d-block w-100 carouselimage" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <a href="#events"> <h5>Check out newest events!</h5> </a> 
                 </div>
             </div>
             <!-- SLIDE 1 end -->
@@ -25,8 +24,7 @@
             <div class="carousel-item">
                 <img src="img/carousel/carousel2.jpg" class="d-block w-100 carouselimage" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <a href="#interprets"> <h5>Check out newest interprets!</h5> </a> 
                 </div>
             </div>
             <!-- SLIDE 2 end -->
@@ -35,8 +33,7 @@
             <div class="carousel-item">
                 <img src="img/carousel/carousel3.jpg" class="d-block w-100 carouselimage" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <a href="#are_u_organizer"> <h5>Are u an organizer?</h5> </a> 
                 </div>
             </div>
             <!-- SLIDE 3 end -->

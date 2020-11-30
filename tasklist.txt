@@ -1,23 +1,17 @@
-front end
-    index.php
-        interpretov dokoncit pridat karticky
-        finish this
-
-    footer.php
-        pridat nejake linky na kontakt atd atd nvm co presne tu chceme
-
-
 spravit funkcnost na eve...
+
+bought tickets
     
 cashier panel
 
 cashier panel pre event
 
-bought tickets
 
 managing events
 
 vypisovanie zanrov podla db pri events a interpret
+
+managing interpret
 
 pridavanie userov do interpreta
 

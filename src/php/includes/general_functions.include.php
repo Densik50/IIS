@@ -505,3 +505,71 @@ function six_newest_interprets($conn)
     }
     return $data;
 }
+
+function make_reservation($conn, $event_id, $user_id)
+{
+    $query = "INSERT INTO EVENT_Tickets(EventID, Buyer, Paied) VALUES($event_id, $user_id, 0);";
+    mysqli_query($conn, $query);
+}
+
+function get_ticket_bytid($conn, $ticket_id)
+{
+    $query = "SELECT * FROM EVENT_Tickets WHERE TicketID = $ticket_id;";
+    $result = mysqli_query($conn, $query);
+    
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function get_tickets_byuid($conn, $user_id)
+{
+    $query = "SELECT * FROM EVENT_Tickets WHERE Buyer = $user_id;";
+    $result = mysqli_query($conn, $query);
+    
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function get_tickets_byeid($conn, $event_id)
+{
+    $query = "SELECT * FROM EVENT_Tickets WHERE EventID = $event_id;";
+    $result = mysqli_query($conn, $query);
+    
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function get_ticketids($conn, $event_id, $user_id)
+{
+    $query = "SELECT * FROM EVENT_Tickets WHERE EventID = $event_id AND Buyer = $user_id;";
+    $result = mysqli_query($conn, $query);
+    
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+    return $data;
+}
+
+function set_aspaied($conn, $ticket_id)
+{
+    $query = "UPDATE EVENT_Tickets SET Paied = 1 WHERE TickedID = $ticket_id;";
+    mysqli_query($conn, $query);
+}
