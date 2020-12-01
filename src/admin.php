@@ -102,7 +102,7 @@
         if(isset($_SESSION["UserID"]))
         {
             $user_data = get_info($_SESSION["UserID"]);
-            if($_SESSION["is_admin"] === 0)
+            if(isset($_SESSION["admin"]))
             {
                 echo "Restricted access!";
             }
