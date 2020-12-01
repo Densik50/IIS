@@ -167,7 +167,12 @@
                         $reserved = $event["Reserved"]."/".$reservations;
                         $price = $event["Price"];
 
-                        //TODO write event's genres
+                        $all_genres = get_allevents_genres($conn, $eventid);
+                        $genres = "";
+                        foreach($all_genres as $genreid):
+                            $genre = get_genre_byid($conn, $genreid["GenreID"]);
+                            $genres = $genres . " " . $genre["GenreName"];
+                        endforeach;
                         echo "
                         <div class=\"row\">
                         <div class=\"card\">
@@ -175,6 +180,9 @@
                             <div class=\"card-body\">
                                 <h5 class=\"card-title\"><a href=\"event.php?id=$eventid\" class=\"\">$name</a></h5>
                                 <p class=\"card-text\">$describtion</p>
+                            </div>
+                            <div class=\"card-footer bg-light\">
+                            $genres
                             </div>
                         </div>
                         </div>

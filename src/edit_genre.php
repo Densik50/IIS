@@ -13,7 +13,7 @@ if (!$conn)
 if($mode == "delete")
 {
     $id = $_GET['id'];
-    $sql = "DELETE FROM genre WHERE GenreID = $id"; 
+    $sql = "DELETE FROM GENRE WHERE GenreID = $id"; 
 
     if (mysqli_query($conn, $sql)) 
     {   
@@ -58,7 +58,7 @@ elseif($mode == "edit")
 
         if(isset($_POST['editgen']) && !empty($_POST['editgen']))
         {
-            if ($stmt = mysqli_prepare($conn, "INSERT INTO genre (GenreName) VALUES (?)")) 
+            if ($stmt = mysqli_prepare($conn, "INSERT INTO GENRE (GenreName) VALUES (?)")) 
             {
                 mysqli_stmt_bind_param($stmt, "s", $_POST['editgen']);
                 mysqli_stmt_execute($stmt);

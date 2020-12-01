@@ -25,11 +25,8 @@
                     $creatorID = $event["UserID"];
                     $creator = user_exists_byid($conn, $creatorID);
                     $creatorUsername = $creator["Username"];
-                    /* $reservations = $event["MaxCapacity"] - $event["Capacity"];
-                    $reserved = $event["Reserved"]."/".$reservations; */
                     $stock = $event["MaxCapacity"] - $event["Reserved"];
 
-                    //TODO genres from db
                     if(($event["MaxCapacity"] - $event["Reserved"]) > 0)
                     {
                         echo "

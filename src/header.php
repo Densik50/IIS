@@ -21,13 +21,13 @@
         <script src='js/main.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <title>SITE_TITLE</title>
+        <title>IIS_FESTIVAL</title>
     </head>
     <body class="bg-light">
 
         <!-- NAVBAR -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mynavbar"> 
-            <a class="navbar-brand" href="index.php#">SITE_NAME</a>
+            <a class="navbar-brand" href="index.php#">IIS_FESTIVAL</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,7 +74,7 @@
                                             {
                                                 echo "
                                                 
-                                                <a class=\"dropdown-item my_dropdownitem\" href=\"admin.php\">Admin panel</a>
+                                                <a class=\"dropdown-item my_dropdownitem\" href=\"user_control.php\">Admin panel</a>
                                                 <div class=\"dropdown-divider\"></div>
                                                 ";
                                             }

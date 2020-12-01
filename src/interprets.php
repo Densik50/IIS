@@ -142,14 +142,18 @@
                         $interpretid = $interpret["InterpretID"];
                         $name = $interpret["Name"];
 
-                        //TODO write interprets's genres
-                        //TODO write interprets's users
+                        $all_genres = get_allinterprets_genres($conn, $interpretid);
+                        $genres = "";
+                        foreach($all_genres as $genreid):
+                            $genre = get_genre_byid($conn, $genreid["GenreID"]);
+                            $genres = $genres . " " . $genre["GenreName"];
+                        endforeach;
                         echo "
                         <div class=\"row\">
                         <div class=\"card\">
                             <div class=\"card-body\">
                                 <h5 class=\"card-title\"><a href=\"interpret.php?id=$interpretid\" class=\"\">$name</a></h5>
-                                <p class=\"card-text\">Metal, Rock, genres...</p>
+                                <p class=\"card-text\">$genres</p>
                             </div>
                         </div>
                         </div>

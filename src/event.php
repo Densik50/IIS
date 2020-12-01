@@ -24,7 +24,12 @@
                     $creator = user_exists_byid($conn, $creatorID);
                     $creatorUsername = $creator["Username"];
 
-                    //TODO genres from db
+                    $all_genres = get_allevents_genres($conn, $_GET["id"]);
+                    $genres = "";
+                    foreach($all_genres as $genreid):
+                        $genre = get_genre_byid($conn, $genreid["GenreID"]);
+                        $genres = $genres . " " . $genre["GenreName"];
+                    endforeach;
 
                     echo "
                     <div class=\"card text-center\">
@@ -56,7 +61,7 @@
                             </div>
                         </div>
                         <div class=\"card-footer text-muted\">
-                            Rock, Rap, ...
+                            $genres
                         </div>
                     </div>
                     ";

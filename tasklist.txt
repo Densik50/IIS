@@ -1,6 +1,10 @@
 spravit funkcnost na eve...
     
-interpret.php
 managing events
 manage interpret
-vypisovanie zanrov podla db pri events a interpret
+dokumentacia
+
+#fail 
+fotky
+automaticky rozpis
+celkovo praca s casovymi udajmi

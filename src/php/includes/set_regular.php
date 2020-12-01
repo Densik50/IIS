@@ -10,7 +10,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "UPDATE users
+    $sql = "UPDATE USERS
     SET is_admin = 0
     WHERE UserID = $id"; 
 

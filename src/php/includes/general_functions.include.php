@@ -276,6 +276,35 @@ function interpret_exists($conn, $name)
     mysqli_stmt_close($stmt);
 }
 
+function interpret_exists_byid($conn, $id)
+{
+    $sql = "SELECT * FROM INTERPRET WHERE InterpretID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../interpret.php?error=stmt_failed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $id);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result))
+    {
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function create_user($conn, $name, $username, $email, $password, $mobile, $address)
 {
     $sql = "INSERT INTO USERS (Fullname, Username, Email, Password, Mobile, Address, is_admin, is_banned) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
@@ -407,6 +436,59 @@ function create_interpretgenres($conn, $checkboxdata, $name)
 function get_genres($conn)
 {
     $sql = "SELECT * FROM GENRE";
+    $stmt = mysqli_query($conn, $sql);
+    $data = array();
+    while ($row = mysqli_fetch_array($stmt)) {
+        $data[] = $row;
+    }
+    return $data;    
+    mysqli_stmt_close($stmt);
+}
+
+function get_genre_byid($conn, $genre_id)
+{
+    $sql = "SELECT * FROM GENRE WHERE GenreID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../../create_event.php?error=stmt_failed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $genre_id);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result))
+    {
+        return $row;
+    }
+    else
+    {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function get_allevents_genres($conn, $event_id)
+{
+    $sql = "SELECT * FROM EVENT_GENRES WHERE EventID = $event_id;";
+    $stmt = mysqli_query($conn, $sql);
+    $data = array();
+    while ($row = mysqli_fetch_array($stmt)) {
+        $data[] = $row;
+    }
+    return $data;    
+    mysqli_stmt_close($stmt);
+}
+
+function get_allinterprets_genres($conn, $interpret_id)
+{
+    $sql = "SELECT * FROM INTERPRET_GENRES WHERE InterpretID = $interpret_id;";
     $stmt = mysqli_query($conn, $sql);
     $data = array();
     while ($row = mysqli_fetch_array($stmt)) {

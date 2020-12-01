@@ -8,7 +8,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "DELETE FROM events WHERE EventID = $id"; 
+    $sql = "DELETE FROM EVENTS WHERE EventID = $id"; 
 
     if (mysqli_query($conn, $sql)) 
     {

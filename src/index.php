@@ -15,7 +15,7 @@
             <div class="carousel-item active">
                 <img src="img/carousel/carousel1.jpg" class="d-block w-100 carouselimage" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <a href="#events"> <h5>Check out newest events!</h5> </a> 
+                    <a href="#events"> <h3>Check out newest events!</h3> </a> 
                 </div>
             </div>
             <!-- SLIDE 1 end -->
@@ -24,7 +24,7 @@
             <div class="carousel-item">
                 <img src="img/carousel/carousel2.jpg" class="d-block w-100 carouselimage" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                <a href="#interprets"> <h5>Check out newest interprets!</h5> </a> 
+                <a href="#interprets"> <h3>Check out newest interprets!</h3> </a> 
                 </div>
             </div>
             <!-- SLIDE 2 end -->
@@ -33,7 +33,7 @@
             <div class="carousel-item">
                 <img src="img/carousel/carousel3.jpg" class="d-block w-100 carouselimage" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <a href="#are_u_organizer"> <h5>Are u an organizer?</h5> </a> 
+                    <a href="#are_u_organizer"> <h3>Are u an organizer?</h3> </a> 
                 </div>
             </div>
             <!-- SLIDE 3 end -->
@@ -55,14 +55,13 @@
     <div class="container">
         <!-- EVENTS SECTION -->
         <div class="bg-dark" id="events">
-            <h2 class="text-center text-uppercase">Newest added events:</h2>
+            <h2 class="text-center text-uppercase text-white">Newest added events:</h2>
             <div class="container row">
                 <?php 
                     require_once "php/includes/database_handler.include.php";
                     require_once "php/includes/general_functions.include.php";
 
                     $data = six_newest_events($conn);
-                    //TODO vypisovanie zanrov podla db
                     foreach($data as $event):
                         $eventid = $event["EventID"];
                         $evetname = $event["Name"];
@@ -104,7 +103,12 @@
                     foreach($data as $interpret):
                         $interpretid = $interpret["InterpretID"];
                         $interpretname = $interpret["Name"];
-                        //TODO vypisovanie zanrov podla db
+                        $all_genres = get_allinterprets_genres($conn, $interpretid);
+                        $genres = "";
+                        foreach($all_genres as $genreid):
+                            $genre = get_genre_byid($conn, $genreid["GenreID"]);
+                            $genres = $genres . " " . $genre["GenreName"];
+                        endforeach;
                         echo "
                         <div class=\"card-index mx-auto card-interpret-index\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 60px;\">
                             <img src=\"img/carousel/carousel1.jpg\" class=\"card-img-top\">
@@ -112,8 +116,8 @@
                                 <h5 class=\"card-title\">$interpretname</h5>
                                 <a href=\"interpret.php?id=$interpretid\" class=\"btn btn-primary\">More info</a>
                             </div>
-                            <div class=\"card-footer bg-light\">
-                                Rock, Metal, Rap...
+                            <div class=\"card-footer bg-white\">
+                                $genres
                             </div>
                         </div>
 

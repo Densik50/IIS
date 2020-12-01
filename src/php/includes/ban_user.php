@@ -12,7 +12,7 @@
     }
 
     //update is_banned value to true
-    $sql = "UPDATE users
+    $sql = "UPDATE USERS
     SET is_banned = 1
     WHERE UserID = $id"; 
 

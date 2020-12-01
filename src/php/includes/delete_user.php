@@ -22,7 +22,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "DELETE FROM users WHERE UserID = $id"; 
+    $sql = "DELETE FROM USERS WHERE UserID = $id"; 
 
     if (mysqli_query($conn, $sql)) 
     {

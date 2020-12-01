@@ -8,7 +8,7 @@
 <h1>EVENT CONTROL</h1>
 
 <?php
-$query = "SELECT * FROM events";
+$query = "SELECT * FROM EVENTS";
 $stmt = mysqli_query($conn,$query);
 $data = array();
 while ($row = mysqli_fetch_array($stmt)) {
@@ -21,7 +21,7 @@ while ($row = mysqli_fetch_array($stmt)) {
 <?php foreach($data as $row): ?>
     <tr>
         <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><?=$row['EventID']?></span></td>
-        <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><a href="event.php?event=<?=$row['EventID']?>"><?=$row['Name']?></a></span></td>
+        <td class="pr-3 py-4 "><span class="border-left border-bottom border-dark rounded px-2 py-2"><a href="event.php?id=<?=$row['EventID']?>"><?=$row['Name']?></a></span></td>
         <td class="pr-3 py-4 "><?=$row['Address']?></td>
         <td class="pr-3 py-4 ">
             <button  type="submit" class="btn btn-primary">
@@ -36,3 +36,10 @@ while ($row = mysqli_fetch_array($stmt)) {
 
 
 </div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    </body>
+    
+</html>

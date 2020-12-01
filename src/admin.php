@@ -40,7 +40,7 @@
 <?php
 
 
-    if(isset($_SESSION["UserID"]))
+    if(isset($_SESSION["admin"]))
     {   
         
         $user_data = user_exists($conn, $_SESSION["Username"], $_SESSION["Username"]);
@@ -66,7 +66,7 @@
                         <h4>Administration</h4>
                     </div>
                     <ul class="navbar-nav">
-                        <li class="active nav-item" id="user_control">
+                        <li class="nav-item" id="user_control">
                             <a class="nav-link" href="user_control.php">
                             <span class="nav-link-text">Users</span></a>
                         </li>

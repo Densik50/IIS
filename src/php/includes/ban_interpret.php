@@ -10,8 +10,8 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "UPDATE users SET is_banned = 1 WHERE SELECT DISTINCT IU.InterpretID, U.UserID 
-    FROM users U JOIN interpret_users IU USING (UserID)
+    $sql = "UPDATE USERS SET is_banned = 1 WHERE SELECT DISTINCT IU.InterpretID, U.UserID 
+    FROM USERS U JOIN INTERPRET_USERS IU USING (UserID)
     WHERE InterpretID = $id";
 
     if (mysqli_query($conn, $sql)) 

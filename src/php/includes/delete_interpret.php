@@ -8,7 +8,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "DELETE FROM interpret WHERE InterpretID = $id"; 
+    $sql = "DELETE FROM INTERPRET WHERE InterpretID = $id"; 
 
     if (mysqli_query($conn, $sql)) 
     {

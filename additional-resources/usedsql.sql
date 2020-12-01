@@ -49,6 +49,7 @@ CREATE TABLE EVENT_CASHIERS (
 CREATE TABLE INTERPRET (
     InterpretID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     Owner int,
+    Describtion varchar(255),
     FOREIGN KEY (Owner) REFERENCES USERS(UserID),
     Name varchar(128)
 );
