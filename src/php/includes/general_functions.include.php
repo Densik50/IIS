@@ -604,6 +604,29 @@ function is_owner($conn, $eventid, $userid)
     }
 }
 
+function is_owner_interpret($conn, $interpretid, $userid)
+{
+    $query = "SELECT * FROM INTERPRET WHERE InterpretID = $interpretid AND Owner = $userid;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+
+    if(count($data) == 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
 function six_newest_events($conn)
 {
     $query = "SELECT * FROM EVENTS ORDER BY `EVENTS`.`EventID` DESC;";

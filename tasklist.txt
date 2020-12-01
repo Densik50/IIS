@@ -1,7 +1,5 @@
 spravit funkcnost na eve...
     
-managing events
-manage interpret
 dokumentacia
 
 #fail 
