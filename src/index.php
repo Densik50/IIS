@@ -134,7 +134,7 @@
                         Are you an organizer?
                     </div>
                     <div style="margin-top: 22vh;" class="col">
-                        Add your even simply!
+                        Add your event simply!
                     </div>
                     <div style="margin-top: 22vh;" class="col">
                         It was never easier!

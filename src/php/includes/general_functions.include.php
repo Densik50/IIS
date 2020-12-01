@@ -499,6 +499,29 @@ function is_cashier($conn, $eventid, $userid)
     }
 }
 
+function is_owner($conn, $eventid, $userid)
+{
+    $query = "SELECT * FROM EVENTS WHERE EventID = $eventid AND UserID = $userid;";
+
+    $result = mysqli_query($conn, $query);
+
+    $data = array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+        $data[] = $row;
+    }
+
+    if(count($data) == 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
 function six_newest_events($conn)
 {
     $query = "SELECT * FROM EVENTS ORDER BY `EVENTS`.`EventID` DESC;";
@@ -601,7 +624,7 @@ function get_ticketids($conn, $event_id, $user_id)
 
 function set_aspaied($conn, $ticket_id, $event_id)
 {
-    $query = "UPDATE EVENT_TICKETS SET Paied = 1 WHERE TickedID = $ticket_id;";
+    $query = "UPDATE EVENT_TICKETS SET Paied = 1 WHERE TicketID = $ticket_id;";
     mysqli_query($conn, $query);
 
     $query = "UPDATE EVENTS SET Capacity = Capacity + 1 WHERE EventID = $event_id;";

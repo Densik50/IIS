@@ -60,6 +60,7 @@
                                     <li class=\"nav-item dropdown bg-dark\">
                                         <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">" . $_SESSION["Username"] . "</a>
                                         <div class=\"dropdown-menu bg-dark\">
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"mytickets.php\">My tickets</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php?user=" . $_SESSION["Username"] . "\">My profile</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"myevents.php\">My events</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"myinterprets.php\">My interprets</a>
