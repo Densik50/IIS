@@ -65,6 +65,7 @@
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"myevents.php\">My events</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"myinterprets.php\">My interprets</a>
                                             <div class=\"dropdown-divider\"></div>
+                                            <a class=\"dropdown-item my_dropdownitem\" href=\"cashier_panel.php\">Cashier panel</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"profile.php\">Edit profile</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"create_event.php\">Create event</a>
                                             <a class=\"dropdown-item my_dropdownitem\" href=\"add_interpret.php\">Add interpret</a>

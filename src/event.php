@@ -24,6 +24,18 @@
                     $creator = user_exists_byid($conn, $creatorID);
                     $creatorUsername = $creator["Username"];
 
+                    $all_interprets = get_allevents_interprets($conn, $_GET["id"]);
+                    $interprets_info = "";
+                    foreach($all_interprets as $intid):
+                        $int = interpret_exists_byid($conn, $intid["InterpretID"]);
+                        $intname = $int["Name"];
+                        $int_id = $int["InterpretID"];
+                        $starts_playing = $intid["Start_date"] . " " . $intid["Start_time"];
+                        $ends_playing = $intid["End_date"] . " " . $intid["End_time"];
+            
+                        $interprets_info = $interprets_info . "<p class=\"card-text\"><a href=\"interpret.php?id=$int_id\">$intname</a> will playing from $starts_playing to $ends_playing</p>";
+                    endforeach;
+
                     $all_genres = get_allevents_genres($conn, $_GET["id"]);
                     $genres = "";
                     foreach($all_genres as $genreid):
@@ -40,6 +52,7 @@
                             <h5 class=\"card-title\">$evetname by <a href=\"profile.php?user=$creatorUsername\" class=\"\">$creatorUsername</a></h5>
                             <p class=\"card-text\">$describtion</p>
                             <p class=\"card-text\">At $address</p>
+                            $interprets_info
                             <p class=\"card-text\">Price: $price (&euro;)</p>
                             <p class=\"card-text\">Capacity: $capacity</p>
                             <div class=\"text-right\">

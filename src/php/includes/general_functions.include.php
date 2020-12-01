@@ -486,6 +486,18 @@ function get_allevents_genres($conn, $event_id)
     mysqli_stmt_close($stmt);
 }
 
+function get_allevents_interprets($conn, $event_id)
+{
+    $sql = "SELECT * FROM EVENT_INTERPRETS WHERE EventID = $event_id;";
+    $stmt = mysqli_query($conn, $sql);
+    $data = array();
+    while ($row = mysqli_fetch_array($stmt)) {
+        $data[] = $row;
+    }
+    return $data;    
+    mysqli_stmt_close($stmt);
+}
+
 function get_allinterprets_genres($conn, $interpret_id)
 {
     $sql = "SELECT * FROM INTERPRET_GENRES WHERE InterpretID = $interpret_id;";

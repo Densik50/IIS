@@ -54,13 +54,6 @@ CREATE TABLE INTERPRET (
     Name varchar(128)
 );
 
-CREATE TABLE INTERPRET_USERS (
-    InterpretID int,
-    UserID int,
-    FOREIGN KEY (InterpretID) REFERENCES INTERPRET(InterpretID),
-    FOREIGN KEY (UserID) REFERENCES USERS(UserID)
-);
-
 CREATE TABLE INTERPRET_GENRES (
     InterpretID int,
     GenreID int,
@@ -77,7 +70,7 @@ CREATE TABLE EVENT_INTERPRETS (
     End_time varchar(32),
     End_date varchar(32),
     FOREIGN KEY (EventID) REFERENCES EVENTS(EventID),
-    FOREIGN KEY (EventID) REFERENCES INTERPRET(InterpretID)
+    FOREIGN KEY (InterpretID) REFERENCES INTERPRET(InterpretID)
 );
 
 CREATE TABLE EVENT_TICKETS(

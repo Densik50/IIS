@@ -30,9 +30,6 @@
 
                     echo "
                     <div class=\"card text-center\">
-                        <div class=\"card-header\">
-                        $members
-                        </div>
                         <div class=\"card-body\">
                             <h5 class=\"card-title\">$interpretname by <a href=\"profile.php?user=$creatorUsername\" class=\"\">$creatorUsername</a></h5>
                             <p class=\"card-text\">$describtion</p>
