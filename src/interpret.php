@@ -19,7 +19,7 @@
                     $creatorUsername = $creator["Username"];
                     //TODO membres from DB
                     $members = "Members : ..."; 
-                    $describtion = "Interpret describtion..."; //TODO nahradit po resete databaze  $describtion = $interpret["Describtion"]
+                    $describtion = $interpret["Describtion"];
 
                     $all_genres = get_allinterprets_genres($conn, $_GET["id"]);
                     $genres = "";
@@ -34,7 +34,7 @@
                         $members
                         </div>
                         <div class=\"card-body\">
-                            <h5 class=\"card-title\">$interpretname by <a href=\"profile?user=$creatorID\" class=\"\">$creatorUsername</a></h5>
+                            <h5 class=\"card-title\">$interpretname by <a href=\"profile.php?user=$creatorUsername\" class=\"\">$creatorUsername</a></h5>
                             <p class=\"card-text\">$describtion</p>
                             <div class=\"text-right\">
                         ";

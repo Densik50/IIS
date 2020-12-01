@@ -37,7 +37,7 @@
                             From $starts to $ends
                         </div>
                         <div class=\"card-body\">
-                            <h5 class=\"card-title\">$evetname by <a href=\"profile?user=$creatorID\" class=\"\">$creatorUsername</a></h5>
+                            <h5 class=\"card-title\">$evetname by <a href=\"profile.php?user=$creatorUsername\" class=\"\">$creatorUsername</a></h5>
                             <p class=\"card-text\">$describtion</p>
                             <p class=\"card-text\">At $address</p>
                             <p class=\"card-text\">Price: $price (&euro;)</p>
