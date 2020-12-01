@@ -6,6 +6,7 @@ if(isset($_POST["submit"]))
     require_once 'database_handler.include.php';
     require_once 'general_functions.include.php';
     $name = $_POST["name"];
+    $describtion = $_POST["describtion"];
 
     //check errors in input forms
     if(empty($name))
@@ -20,7 +21,7 @@ if(isset($_POST["submit"]))
         exit();
     }
     session_start();
-    add_interpret($conn, $name, $_SESSION["UserID"]);
+    add_interpret($conn, $name, $_SESSION["UserID"], $describtion);
     $data = get_genres($conn);
     $checkboxdata = array();
     foreach($data as $row):

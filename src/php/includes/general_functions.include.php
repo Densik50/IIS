@@ -338,9 +338,9 @@ function create_event($conn, $name, $describtion, $address, $start_date, $start_
     }
 }
 
-function add_interpret($conn, $name, $owner)
+function add_interpret($conn, $name, $owner, $describtion)
 {
-    $query = "INSERT INTO INTERPRET(Owner, Name) VALUES ($owner, '$name');";
+    $query = "INSERT INTO INTERPRET(Owner, Describtion, Name) VALUES ($owner,'$describtion','$name');";
     //add new interpret
     if (mysqli_query($conn, $query) === FALSE) {
         header("location: ../../add_interpret.php?error=stmt_failed&errordes=".mysqli_error($conn));

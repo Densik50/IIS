@@ -21,6 +21,15 @@
                         </div>
                         <!-- NAME END -->  
 
+                        <!-- describtion -->
+                        <div class=\"form-group row\">
+                            <label for=\"describtion\" class=\"col-sm-2 col-form-label\">Describtion: </label>
+                            <div class=\"col-sm-10\">
+                                <input type=\"text\" name=\"describtion\" class=\"form-control\" id=\"describtion\" placeholder=\"Describtion\">
+                            </div>
+                        </div>
+                        <!-- describtion END -->  
+
                         <!-- POSTER -->
                         <div class=\"form-group row\">
                             <label class=\"col-sm-2 col-form-label\" for=\"poster\">Poster: </label>
