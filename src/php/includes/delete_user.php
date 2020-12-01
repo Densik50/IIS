@@ -27,7 +27,7 @@
     if (mysqli_query($conn, $sql)) 
     {
         mysqli_close($conn);
-        header('Location: ../../admin.php?boo=1');
+        header('Location: ../../user_control.php');
         exit;
     } 
     else 

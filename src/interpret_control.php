@@ -1,8 +1,9 @@
 <?php
+    include_once 'admin.php';
     include_once 'php/includes/database_handler.include.php';
 ?>
 
-<div>
+<div style="width:75%; position:relative; left:20%">
 
 <h1>INTERPRET CONTROL</h1>
 

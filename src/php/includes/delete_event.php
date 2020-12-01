@@ -13,7 +13,7 @@
     if (mysqli_query($conn, $sql)) 
     {
         mysqli_close($conn);
-        header('Location: ../../admin.php?boo=2');
+        header('Location: ../../event_control.php');
         exit;
     } 
     else 
