@@ -1,15 +1,6 @@
 spravit funkcnost na eve...
     
-cashier panel
-
+interpret.php
 managing events
-
+manage interpret
 vypisovanie zanrov podla db pri events a interpret
-
-
-
-
-
-managing interpret
-
-pridavanie userov do interpreta

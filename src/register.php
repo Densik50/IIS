@@ -129,7 +129,11 @@
             if(isset($_GET["error"])) {
                 if($_GET["error"] == "empty_input")
                 {
-                    echo "<p> Example error 1.<\p>";
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        Please fill out all inputs marked with *.
+                    </div>
+                    ";
                 }
             }
         ?>
