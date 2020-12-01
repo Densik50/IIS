@@ -34,31 +34,31 @@ if(isset($_POST["submit"]))
     //check errors in input forms
     if(is_empty_registerform($name, $username, $email, $password, $password_repeat) === true)
     {
-        header("location: ../../register.php?error=empty_input");
+        header("location: ../../register.php?error=empty_input&name=$name&userid=$username&email=$email&mobile=$phone&address=$address");
         exit();
     }
 
     if(is_valid_username($username) === false)
     {
-        header("location: ../../register.php?error=invalid_username");
+        header("location: ../../register.php?error=invalid_username&name=$name&userid=$username&email=$email&mobile=$phone&address=$address");
         exit();
     }
 
     if(is_valid_email($email) === false)
     {
-        header("location: ../../register.php?error=invalid_email");
+        header("location: ../../register.php?error=invalid_email&name=$name&userid=$username&email=$email&mobile=$phone&address=$address");
         exit();
     }
 
     if(password_match($password, $password_repeat) === false)
     {
-        header("location: ../../register.php?error=pwd_match");
+        header("location: ../../register.php?error=pwd_match&name=$name&userid=$username&email=$email&mobile=$phone&address=$address");
         exit();
     }
 
     if(user_exists($conn, $username, $email) === true)
     {
-        header("location: ../../register.php?error=user_already_exists");
+        header("location: ../../register.php?error=user_already_exists&name=$name&userid=$username&email=$email&mobile=$phone&address=$address");
         exit();
     }
     create_user($conn, $name, $username, $email, $password, $phone, $address);

@@ -113,7 +113,7 @@
                         <div class=\"form-group row\">
                             <label for=\"maxcap\" class=\"col-sm-2 col-form-label\">Max. capacity: </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"text\" name=\"maxcap\" class=\"form-control\" id=\"maxcap\" placeholder=\"150\">
+                                <input type=\"number\" name=\"maxcap\" class=\"form-control\" id=\"maxcap\" placeholder=\"150\" min=\"5\">
                             </div>
                         </div>
                         <!-- MAX CAPACITY END --> 
@@ -122,7 +122,7 @@
                         <div class=\"form-group row\">
                             <label for=\"price\" class=\"col-sm-2 col-form-label\">Entry price(EUR): </label>
                             <div class=\"col-sm-10\">
-                                <input type=\"text\" name=\"price\" class=\"form-control\" id=\"price\" placeholder=\"5\">
+                                <input type=\"number\" name=\"price\" class=\"form-control\" id=\"price\" placeholder=\"5\" min=\"1\">
                             </div>
                         </div>
                         <!-- PRICE END --> 

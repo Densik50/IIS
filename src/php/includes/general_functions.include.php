@@ -42,6 +42,35 @@ function is_valid_username($username)
     return $result;
 }
 
+function is_valid_date($date) 
+{
+    $result;
+    if(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1]).(0[1-9]|1[0-2]).[0-9]{4}$/",$date))
+
+    {
+        $result = true;
+    }
+    else
+    {
+        $result = false;
+    }
+    return $result;
+}
+
+function is_valid_time($time) 
+{
+    $result;
+    if(preg_match("/^(0[0-9]|1[0-9]|2[0-3]):(0[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9])$/", $time))
+    {
+        $result = true;
+    }
+    else
+    {
+        $result = false;
+    }
+    return $result;
+}
+
 function is_valid_email($email)
 {
     $result;
@@ -254,7 +283,7 @@ function create_user($conn, $name, $username, $email, $password, $mobile, $addre
 
     if(!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("location: ../../register.php?error=stmt_failed");
+        header("location: ../../register.php?error=stmt_failed&name=$name&userid=$username&email=$email&mobile=$mobile&address=$address");
         exit();
     }
 
@@ -508,13 +537,15 @@ function six_newest_interprets($conn)
 
 function make_reservation($conn, $event_id, $user_id)
 {
-    $query = "INSERT INTO EVENT_Tickets(EventID, Buyer, Paied) VALUES($event_id, $user_id, 0);";
+    $query = "INSERT INTO EVENT_TICKETS(EventID, Buyer, Paied) VALUES($event_id, $user_id, 0);";
+    mysqli_query($conn, $query);
+    $query = "UPDATE EVENTS SET Reserved = Reserved + 1 WHERE EventID = $event_id;";
     mysqli_query($conn, $query);
 }
 
 function get_ticket_bytid($conn, $ticket_id)
 {
-    $query = "SELECT * FROM EVENT_Tickets WHERE TicketID = $ticket_id;";
+    $query = "SELECT * FROM EVENT_TICKETS WHERE TicketID = $ticket_id;";
     $result = mysqli_query($conn, $query);
     
     $data = array();
@@ -528,7 +559,7 @@ function get_ticket_bytid($conn, $ticket_id)
 
 function get_tickets_byuid($conn, $user_id)
 {
-    $query = "SELECT * FROM EVENT_Tickets WHERE Buyer = $user_id;";
+    $query = "SELECT * FROM EVENT_TICKETS WHERE Buyer = $user_id;";
     $result = mysqli_query($conn, $query);
     
     $data = array();
@@ -542,7 +573,7 @@ function get_tickets_byuid($conn, $user_id)
 
 function get_tickets_byeid($conn, $event_id)
 {
-    $query = "SELECT * FROM EVENT_Tickets WHERE EventID = $event_id;";
+    $query = "SELECT * FROM EVENT_TICKETS WHERE EventID = $event_id;";
     $result = mysqli_query($conn, $query);
     
     $data = array();
@@ -556,7 +587,7 @@ function get_tickets_byeid($conn, $event_id)
 
 function get_ticketids($conn, $event_id, $user_id)
 {
-    $query = "SELECT * FROM EVENT_Tickets WHERE EventID = $event_id AND Buyer = $user_id;";
+    $query = "SELECT * FROM EVENT_TICKETS WHERE EventID = $event_id AND Buyer = $user_id;";
     $result = mysqli_query($conn, $query);
     
     $data = array();
@@ -568,8 +599,14 @@ function get_ticketids($conn, $event_id, $user_id)
     return $data;
 }
 
-function set_aspaied($conn, $ticket_id)
+function set_aspaied($conn, $ticket_id, $event_id)
 {
-    $query = "UPDATE EVENT_Tickets SET Paied = 1 WHERE TickedID = $ticket_id;";
+    $query = "UPDATE EVENT_TICKETS SET Paied = 1 WHERE TickedID = $ticket_id;";
+    mysqli_query($conn, $query);
+
+    $query = "UPDATE EVENTS SET Capacity = Capacity + 1 WHERE EventID = $event_id;";
+    mysqli_query($conn, $query);
+
+    $query = "UPDATE EVENTS SET Reserved = Reserved - 1 WHERE EventID = $event_id;";
     mysqli_query($conn, $query);
 }
