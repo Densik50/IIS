@@ -30,7 +30,7 @@
                                 <td>$interpret_name</td>
                                 <td>
                                     <button type=\"submit\" class=\"btn btn-primary\" id=\"Name\">
-                                        <a class=\"text-white\" href=\"edit_interpret.php?info=Name&event_id=$interpret_id\">Edit</a>
+                                        <a class=\"text-white\" href=\"edit_interpret.php?info=Name&interpret_id=$interpret_id\">Edit</a>
                                     </button>
                                 </td>
                             </tr>
@@ -39,7 +39,7 @@
                                 <td>$describtion</td>
                                 <td>
                                     <button type=\"submit\" class=\"btn btn-primary abtn\" id=\"Describtion\">
-                                        <a class=\"text-white\" href=\"edit_event.php?info=Describtion&event_id=$event_id\">Edit</a>
+                                        <a class=\"text-white\" href=\"edit_interpret.php?info=Describtion&interpret_id=$interpret_id\">Edit</a>
                                     </button>
                                 </td>
                             </tr>

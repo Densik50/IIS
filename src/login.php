@@ -40,11 +40,27 @@
             if(isset($_GET["error"])) {
                 if($_GET["error"] == "empty_input")
                 {
-                    echo "<p> Example error 1.<\p>";
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        You forgot to input all needed information :( Try again...
+                    </div>
+                    ";
                 }
                 else if($_GET["error"] == "wrong_login")
                 {
-                    echo "<p> Example error 2.<\p>";
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        Wrong login credentials :( Try again...
+                    </div>
+                    ";
+                }
+                else if($_GET["error"] == "you_are_banned")
+                {
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        You are banned :( Go away!
+                    </div>
+                    ";
                 }
             }
         ?>

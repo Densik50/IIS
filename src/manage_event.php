@@ -29,7 +29,9 @@
                         $End_date = $event["End_date"];
                         $End_time = $event["End_time"];
                         $Price = $event["Price"];
-                        $MaxCapacity = $event["MaxCapacity"];
+                        $MaxCapacity = $event["MaxCapacity"];                  
+                        
+
                         echo "
                         <table class=\"table table-sm\">
                             <tr>    
@@ -112,6 +114,46 @@
                                         <a class=\"text-white\" href=\"edit_event.php?info=MaxCapacity&event_id=$event_id\">Edit</a>
                                     </button>
                                 </td>
+                            </tr>
+                            <tr>
+                                <th scope=\"col\">Add Interpret:</th>
+                                <td></td>
+                                <td>
+                                    <button type=\"submit\" class=\"btn btn-primary abtn\" id=\"MaxCapacity\">
+                                        <a class=\"text-white\" href=\"edit_event.php?info=addinterpret&event_id=$event_id\">ADD</a>
+                                    </button>
+                                </td>
+                           
+                            </tr>
+                            <tr>
+                                <th scope=\"col\">Delete Interpret:</th>
+                                <td></td>
+                                <td>
+                                    <button type=\"submit\" class=\"btn btn-primary abtn\" id=\"MaxCapacity\">
+                                        <a class=\"text-white\" href=\"edit_event.php?info=deleteinterpret&event_id=$event_id\">DELET</a>
+                                    </button>
+                                </td>
+                           
+                            </tr>
+                            <tr>
+                                <th scope=\"col\">Add Cashier:</th>
+                                <td></td>
+                                <td>
+                                    <button type=\"submit\" class=\"btn btn-primary abtn\" id=\"MaxCapacity\">
+                                        <a class=\"text-white\" href=\"edit_event.php?info=addcashier&event_id=$event_id\">ADD</a>
+                                    </button>
+                                </td>
+                           
+                            </tr>
+                            <tr>
+                                <th scope=\"col\">Delete Cashier:</th>
+                                <td></td>
+                                <td>
+                                    <button type=\"submit\" class=\"btn btn-primary abtn\" id=\"MaxCapacity\">
+                                        <a class=\"text-white\" href=\"edit_event.php?info=deletecashier&event_id=$event_id\">DELET</a>
+                                    </button>
+                                </td>
+                           
                             </tr>
                         </table>
                         ";

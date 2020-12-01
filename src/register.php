@@ -135,6 +135,38 @@
                     </div>
                     ";
                 }
+                elseif($_GET["error"] == "invalid_username")
+                {
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        Your username is invalid :( Please use only lower/uppercase letters and numbers.
+                    </div>
+                    ";
+                }
+                elseif($_GET["error"] == "invalid_email")
+                {
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        Your email is invalid :( Please insert valid email (aaa@bbb.ccc).
+                    </div>
+                    ";
+                }
+                elseif($_GET["error"] == "pwd_match")
+                {
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        Your passwords do not match :( Try again...
+                    </div>
+                    ";
+                }
+                elseif($_GET["error"] == "user_already_exists")
+                {
+                    echo "
+                    <div class=\"alert alert-danger\" style=\"margin-top: 15px;\" role=\"alert\">
+                        Someone like you already exists :( Choose another username...
+                    </div>
+                    ";
+                }
             }
         ?>
 
